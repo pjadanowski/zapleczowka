@@ -1,0 +1,14 @@
+<link href="/css/bloggar/themify-icons.css" rel="stylesheet">
+<link href="/css/bloggar/flaticon.css" rel="stylesheet">
+<link href="/css/bloggar/magnific-popup.css" rel="stylesheet">
+<link href="/css/bloggar/animate.css" rel="stylesheet">
+<link href="/css/bloggar/owl.carousel.css" rel="stylesheet">
+<link href="/css/bloggar/owl.theme.css" rel="stylesheet">
+<link href="/css/bloggar/slick.css" rel="stylesheet">
+<link href="/css/bloggar/slick-theme.css" rel="stylesheet">
+<link href="/css/bloggar/swiper.min.css" rel="stylesheet">
+<link href="/css/bloggar/owl.transitions.css" rel="stylesheet">
+<link href="/css/bloggar/jquery.fancybox.css" rel="stylesheet">
+<link href="/css/bloggar/odometer-theme-default.css" rel="stylesheet">
+<link href="/css/bloggar/global.css" rel="stylesheet">
+<link href="/css/bloggar/style.css" rel="stylesheet">
