@@ -18,17 +18,4 @@ class TemplateService
         };
     }
 
-    public function getCssLinks()
-    {
-        return [
-            'bloggar' => 'component-name',
-        ];
-    }
-
-    public function getScriptsLinks()
-    {
-        return [
-            'bloggar' => 'component-name',
-        ];
-    }
 }

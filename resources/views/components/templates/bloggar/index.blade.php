@@ -3,7 +3,6 @@
         
         <!-- start header-section -->
         <header>
-            <h1 class="hidden">section heading hidden</h1>
             <div class="topbar">
                 <div class="wraper">
                     <div class="border-b-[1px] border-[#eeeeee] col:mb-2">
@@ -46,60 +45,29 @@
                         <button class="dl-trigger">Open Menu</button>
                         <ul class="dl-menu">
                             <li>
-                                <a href="#">Home</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="index.html">Home style 1</a></li>
-                                    <li><a href="index-2.html">Home style 2</a></li>
-                                    <li><a href="index-3.html">Home style 3</a></li>
-                                </ul>
+                                <a href="/">Strona główna</a>
                             </li>
                             <li>
-                                <a href="#">Pages</a>
+                                <a href="#">FAQ</a>
                                 <ul class="dl-submenu">
-                                    <li><a href="blog.html">Archive</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="shop-single.html">Shop Single</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="404.html">Error 404</a></li>
-                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="/contact">Kontakt</a></li>
                                 </ul>
                             </li>
-                            <li><a href="lifestyle.html">Lifestyle</a></li>
-                            <li><a href="foods.html">Foods</a></li>
-                            <li><a href="business.html">Business</a></li>
-                            <li><a href="travels.html">Travel</a></li>
-                            <li>
-                                <a href="http://google.com">Post</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="blog.html">Post right sidebar</a></li>
-                                    <li><a href="blog-left-sidebar.html">Post left sidebar</a></li>
-                                    <li><a href="blog-fullwidth.html">Post fullwidth</a></li>
-                                    <li>
-                                        <a href="#">Blog details</a>
-                                        <ul class="dl-submenu">
-                                            <li><a href="blog-single.html">Post details right sidebar</a>
-                                            </li>
-                                            <li><a href="blog-single-left-sidebar.html">Post details left
-                                                    sidebar</a></li>
-                                            <li><a href="blog-single-fullwidth.html">Post details
-                                                    fullwidth</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                            <!-- cats -->
+                            @foreach ($categories as $c)
+                                <li><a href="{{ route('category.articles', $c) }}">{{ $c->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div><!-- /dl-menuwrapper -->
 
                     <div class="w-[195px] md:w-[280px] sm:w-[200px] col:w-[150px] col:ml-[50px]">
-                        <a class="flex items-center md:justify-center text-white" href="index.html">
+                        <a class="flex items-center md:justify-center text-white" href="/">
                             <img class="" src="assets/images/logo.png" alt=""></a>
                     </div>
 
                     <ul class="md:hidden">
                         <li class="relative inline-block group">
-                            <a href="#" class="relative text-[20px] lg:text-[17px] py-[35px]
+                            <a href="/" class="relative text-[20px] lg:text-[17px] py-[35px]
                                  xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
                                     text-[#3756f7] block capitalize
                                     font-heading-font font-medium transition-all
@@ -108,31 +76,6 @@
                                     before:h-[4px] before:bg-[#3756f7] before:content
                                 before:opacity-1 before:visible before:transition-all
                                     before:rounded-[3px]">Home</a>
-                            <ul class="absolute w-[240px]  left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);]  transition-all  opacity-0 invisible
-                                        group-hover:opacity-100 group-hover:top-full group-hover:visible ">
-                                <li>
-                                    <a href="index.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-[50%] after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font after:opacity-100 after:visible
-                                            hover:after:w-[50%]">Home Style 1</a>
-                                </li>
-                                <li>
-                                    <a href="index-2.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Home Style 2</a>
-                                </li>
-                                <li>
-                                    <a href="index-3.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Home Style 3</a>
-                                </li>
-
-                            </ul>
                         </li>
                         <li class="relative inline-block group">
                             <a href="#" class="relative text-[20px] lg:text-[17px] py-[35px]
@@ -148,66 +91,17 @@
                                     shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                     group-hover:opacity-100 group-hover:top-full group-hover:visible ">
                                 <li>
-                                    <a href="blog.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
+                                    <a href="/contact" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
                                             text-[#232f4b] group relative overflow-hidden font-medium transition-all
                                             after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                             after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Archive</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Contact Us</a>
-                                </li>
-                                <li>
-                                    <a href="shop.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Shop Page</a>
-                                </li>
-                                <li>
-                                    <a href="shop-single.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Shop Single</a>
-                                </li>
-                                <li>
-                                    <a href="cart.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Cart</a>
-                                </li>
-                                <li>
-                                    <a href="checkout.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Checkout</a>
-                                </li>
-
-                                <li>
-                                    <a href="404.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">404 Error</a>
-                                </li>
-                                <li>
-                                    <a href="login.html" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">login</a>
+                                            hover:after:w-[50%]">Kontakt</a>
                                 </li>
                             </ul>
                         </li>
+                         @foreach ($categories->take(4) as $c)
                         <li class="relative inline-block">
-                            <a href="lifestyle.html" class="relative text-[20px] lg:text-[17px] py-[35px]
+                            <a href="{{ route('category.articles', $c) }}" class="relative text-[20px] lg:text-[17px] py-[35px]
                                  xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
                                     text-[#232f4b] block capitalize
                                     font-heading-font font-medium transition-all
@@ -216,45 +110,10 @@
                                    before:bg-[#3756f7] before:content
                                    before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
                                    hover:before:opacity-100 hover:before:visible
-                                ">Lifestyle</a>
+                                ">{{ $c->name }}</a>
                         </li>
-                        <li class="relative inline-block">
-                            <a href="foods.html" class="relative text-[20px] lg:text-[17px] py-[35px]
-                                 xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
-                                    text-[#232f4b] block capitalize
-                                    font-heading-font font-medium transition-all
-                                   hover:text-[#3756f7]
-                                   before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
-                                   before:bg-[#3756f7] before:content
-                                   before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                   hover:before:opacity-100 hover:before:visible
-                                ">Foods</a>
-                        </li>
-                        <li class="relative inline-block">
-                            <a href="business.html" class="relative text-[20px] lg:text-[17px] py-[35px]
-                                 xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
-                                    text-[#232f4b] block capitalize
-                                    font-heading-font font-medium transition-all
-                                   hover:text-[#3756f7]
-                                   before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
-                                   before:bg-[#3756f7] before:content
-                                   before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                   hover:before:opacity-100 hover:before:visible
-                                ">business</a>
-                        </li>
-                        <li class="relative inline-block">
-                            <a href="travels.html" class="relative text-[20px] lg:text-[17px] py-[35px]
-                                 xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
-                                    text-[#232f4b] block capitalize
-                                    font-heading-font font-medium transition-all
-                                   hover:text-[#3756f7]
-                                   before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
-                                   before:bg-[#3756f7] before:content
-                                   before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                   hover:before:opacity-100 hover:before:visible
-                                ">travels</a>
-                        </li>
-
+                        @endforeach
+                       
                         <li class="relative inline-block group">
                             <a href="#" class="relative text-[20px] lg:text-[17px] py-[35px]
                                  xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
@@ -533,10 +392,6 @@
         <!-- start of wpo-breacking-news -->
         <div class="py-[60px] md:py-10">
             <div class="wraper">
-                <div class="pl-0">
-                    <span class="text-base p-[5px_10px] bg-[#3756f7] inline rounded-[10px_10px_0_0] text-white">Breaking
-                        News</span>
-                </div>
                 <div class="wpo-breacking-wrap owl-carousel bg-[#f9faff] border-y-[#e9edff] border">
                     <div class="s1 flex items-center p-5 border-x-[#e9edff] m-[-1px]">
                         <div class="basis-[30%] rounded-[6px]">
@@ -847,7 +702,7 @@
                                   before:bg-[#3756f7]
                                   after:absolute after:left-[65px] after:bottom-0 after:w-[80%] after:h-[4px]
                                   after:rounded-[10px]
-                                  after:bg-[#f2f2f2] ">Trending Topics</h3>
+                                  after:bg-[#f2f2f2] ">Popularne kategorie</h3>
                                 <ul>
                                     <li class="text-lg font-normal relative">
                                         <a href="blog-single.html"
@@ -894,7 +749,7 @@
                                   before:bg-[#3756f7]
                                   after:absolute after:left-[65px] after:bottom-0 after:w-[80%] after:h-[4px]
                                   after:rounded-[10px]
-                                  after:bg-[#f2f2f2]">Popular Post</h3>
+                                  after:bg-[#f2f2f2]">Popularne artykuły</h3>
                                 <div class="posts">
                                     <div class="overflow-hidden">
                                         <div class="w-[70px] float-left">
@@ -1253,8 +1108,7 @@
                                 <h3 class="text-[25px] text-white capitalize relative font-heading-font font-bold
                                      ">Newsletter</h3>
                             </div>
-                            <p class="mb-[10px] text-white text-[16px] leading-[30px]">Many desktop publi’s shing
-                                packages web page editors now is use sites.</p>
+                            <p class="mb-[10px] text-white text-[16px] leading-[30px]">Zapisz się do newslettera aby być na bieżąco.</p>
                             <form class="mt-[25px] relative">
                                 <input type="email" class="bg-[#28343e] h-[55px] text-white p-[6px_15px] 
                                 border-[1px] border-[#28343e] w-full focus:outline-0 rounded-[5px] "
@@ -1275,8 +1129,8 @@
                     <div class="grid grid-cols-12 gap-4">
                         <div class="col-span-12 md:col-span-12">
                             <p class="text-[15px] text-white text-center">
-                                Copyright &copy; {{  date('Y') }} All Right Reserved by
-                                <a href="index.html" class="text-[#3756f7]">{{ config('app.name') }}</a>
+                                Copyright &copy; {{  date('Y') }} wszelkie prawa zastrzeżone.
+                                <a href="/" class="text-[#3756f7]">{{ config('app.name') }}</a>
                             </p>
                         </div>
                     </div>
