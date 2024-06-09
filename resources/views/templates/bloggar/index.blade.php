@@ -24,7 +24,7 @@
                                     <div class="p-[3px_15px] text-center text-xl rounded-[5px] inline-block font-bold text-[#003aae] 
                                     bg-[rgba(255,255,255,0.8)] col:text-base">{{ $firstArticle->category->name }}</div>
                                     <h2 class="text-[35px] text-white mt-[15px] leading-10 col:text-xl font-semibold">
-                                        <a href="{{ route('articles.show', $firstArticle->slug) }}">
+                                        <a href="{{ $firstArticle->show() }}">
                                             {{ $firstArticle->title }}
                                         </a>
                                     </h2>
@@ -113,55 +113,18 @@
                     </div>
                     <div class="col-span-4 md:col-span-12">
                         <div class="pl-2 md:pl-0 md:mt-[80px] max-w-[550px]">
-                            <div class="mb-7 p-7 border-[#eef0fc] border">
-                                <h3 class="text-2xl text-[#232f4b] relative capitalize pb-5 mb-5
-                                  before:absolute before:left-0 before:bottom-0 before:w-[55px] before:h-[4px]
-                                  before:rounded-[10px]
-                                  before:bg-[#3756f7]
-                                  after:absolute after:left-[65px] after:bottom-0 after:w-[80%] after:h-[4px]
-                                  after:rounded-[10px]
-                                  after:bg-[#f2f2f2] ">Popularne kategorie</h3>
-                                <ul>
-                                    @foreach ($categories as $category)
-                                    <li class="text-lg font-normal relative sm:text-base mb-5 pb-5 border-b border-[#eef0fc]">
-                                        <a href="{{ route('category.articles', $category->slug)}}"
-                                            class="block text-[#474f62] relative pl-7 before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:content-['\e649'] before:font-['themify'] before:text-base transition-all hover:text-[#3756f7] hover:before:text-[#3756f7] before:transition-all">
-                                            {{ $category->name }}
-                                            <span class="absolute right-0">({{ $category->articles_count }})</span></a>
-                                    </li>
-                                    @endforeach
-                                    
-                                </ul>
-                            </div>
-                            <div class="mb-7 p-7 border-[#eef0fc] border">
-                                <h3 class="text-2xl text-[#232f4b] relative capitalize pb-5 mb-5
-                                  before:absolute before:left-0 before:bottom-0 before:w-[55px] before:h-[4px]
-                                  before:rounded-[10px]
-                                  before:bg-[#3756f7]
-                                  after:absolute after:left-[65px] after:bottom-0 after:w-[80%] after:h-[4px]
-                                  after:rounded-[10px]
-                                  after:bg-[#f2f2f2]">Popularne artykuły</h3>
-                                <div class="posts">
-                                    @foreach ($latestArticles->shuffle()->take(5) as $art)
-                                        <div class="overflow-hidden mt-4 pt-4">
-                                            <div class="w-[70px] float-left">
-                                                <img src="{{$art->thumbnailImg}}" alt class="rounded-[5px]">
-                                            </div>
-                                            <div class="w-[calc(100%-70px)] float-left pl-5">
-                                                <span class="text-sm text-[#444444] relative top-[-5px]"> {{ $art->created_at->toFormattedDateString()}} </span>
-                                                <h4 class="text-lg font-medium"><a
-                                                        class="text-[#232f4b] transition-all hover:text-[#3756f7]"
-                                                        href="{{ $art->show() }}">{{ $art->title }}</a></h4>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div>
+                            @include('components.templates.bloggar.popular-categories-widget')
+                            @include('components.templates.bloggar.popular-posts-widget')
+
+                            {{-- 
+                                reklama
+                                 <div>
                                 <a href="#">
                                     <img src="assets/images/add.jpg" alt="" class="w-full md:w-auto">
                                 </a>
                             </div>
+                                --}}
+                           
                         </div>
                     </div>
                 </div>
@@ -332,7 +295,9 @@
         <section class="pt-0 py-[60px] sm:py-[40px] sm:pt-0">
             <div class="wraper">
                 <div
-                    class="p-[70px_100px] lg:p-[70px] md:p-[50px_30px] col:p-[40px_30px] relative overflow-hidden bg-[url(../images/newslatter-bg.png)] bg-no-repeat bg-center rounded-[60px] z-10 col:rounded-[30px]">
+                    class="p-[70px_100px] lg:p-[70px] md:p-[50px_30px] col:p-[40px_30px] relative overflow-hidden bg-no-repeat bg-center rounded-[60px] z-10 col:rounded-[30px]"
+                    style="background-image: url('/img/newslatter-bg.png');">
+                    >
                     <div class="text-center mb-[40px] md:mb-[20px]">
                         <h3
                             class="text-[40px] text-white my-4 font-bold lg:text-[32px] md:text-[28px] md:mt-0 col:text-[24px]">

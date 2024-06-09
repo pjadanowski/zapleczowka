@@ -22,7 +22,8 @@
             @yield('content')
             {{ $slot ?? ''}}
         </main>
-
+        
+        @include('components.templates.bloggar.footer')
         
         @include('components.templates.bloggar.scripts')
         

@@ -10,11 +10,8 @@ class PageController extends Controller
     {
         $latestArticles = Article::with('category')->select(['id', 'title', 'created_at', 'category_id', 'article'])->forCurrentInstance()->latest()->get();
        
-        $categories = \App\Models\Category::withCount('articles')->forCurrentInstance()->whereHas('articles')->latest()->take(10)->get();
-
         return templateView('index', [
             'latestArticles' => $latestArticles,
-            'categories'     => $categories,
         ]);
     }
 }

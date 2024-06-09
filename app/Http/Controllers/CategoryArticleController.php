@@ -11,8 +11,9 @@ class CategoryArticleController extends Controller
     {
         // id after last -
         $id = Str::afterLast($categorySlug, '-');
-        $category = Category::with('articles')->find($id);
+        $category = Category::findOrFail($id);
+        $articles = $category->articles()->paginate(30);
 
-        return view('categoryArticles.show', compact('category'));
+        return templateView('categoryArticles.show', compact('category', 'articles'));
     }
 }

@@ -34,10 +34,11 @@
                                     text-[#3756f7] block capitalize
                                     font-heading-font font-medium transition-all
                                     hover:text-[#3756f7]
-                                    before:absolute before:left-0 before:top-0 before:w-full
+                                   {{ isRoute('index') ? ' before:absolute before:left-0 before:top-0 before:w-full
                                     before:h-[4px] before:bg-[#3756f7] before:content
                                 before:opacity-1 before:visible before:transition-all
-                                    before:rounded-[3px]">Home</a>
+                                    before:rounded-[3px]' : '' }}
+                                    ">Home</a>
                         </li>
                         <li class="relative inline-block group">
                             <a href="#" class="relative text-[20px] lg:text-[17px] py-[35px]
@@ -61,7 +62,7 @@
                                 </li>
                             </ul>
                         </li>
-                         @foreach ($categories->take(4) as $c)
+                        @foreach ($categories->take(4) as $c)
                         <li class="relative inline-block">
                             <a href="{{ route('category.articles', $c) }}" class="relative text-[20px] lg:text-[17px] py-[35px]
                                  xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
@@ -76,29 +77,6 @@
                         </li>
                         @endforeach
                        
-                        <li class="relative inline-block group">
-                            <a href="#" class="relative text-[20px] lg:text-[17px] py-[35px]
-                                 xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
-                                    text-[#232f4b] block capitalize
-                                    font-heading-font font-medium transition-all
-                                   hover:text-[#3756f7]
-                                   before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
-                                   before:bg-[#3756f7] before:content
-                                   before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
-                                   hover:before:opacity-100 hover:before:visible">Post</a>
-                            <ul class="absolute w-[240px] left-0 top-[110%] pt-[20px] pb-[15px] px-[7px] z-[111] bg-[#fff]
-                                    shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
-                                    group-hover:opacity-100 group-hover:top-full group-hover:visible ">
-                                <li>
-                                    <a href="blog.html" class="text-[16px]
-                                         lg:text-[16px] inline-block  px-[15px] capitalize py-1
-                                            text-[#232f4b] group relative overflow-hidden font-medium transition-all
-                                            after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
-                                            after:content after:bg-[#3756f7] after:transition-all font-heading-font
-                                            hover:after:w-[50%]">Post With Right Sidebar</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
 
                     <div class="flex items-center">
@@ -124,73 +102,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="header-right-menu-wrapper">
-                            <div class="header-right-menu">
-                                <div class="right-menu-toggle-btn text-right cursor-pointer">
-                                    <span class="block w-[25px] h-[2px] bg-[#444444] mb-[6px] ml-auto"></span>
-                                    <span class="block w-[25px] h-[2px] bg-[#444444] mb-[6px] ml-auto"></span>
-                                    <span class="block w-[25px] h-[2px] bg-[#444444] mb-[6px] ml-auto"></span>
-                                </div>
-                                <div class="header-right-menu-wrap ">
-                                    <button class="right-menu-close"><i class="ti-close"></i></button>
-                                    <div class="logo"><img src="assets/images/logo2.png" alt=""></div>
-                                    <div class="header-right-sec">
-                                        <div class="project-widget widget">
-                                            <h3>Our Latest News</h3>
-                                            <div class="posts">
-                                                <div class="post">
-                                                    <div class="img-holder">
-                                                        <img src="assets/images/recent-posts/img-1.jpg" alt>
-                                                    </div>
-                                                    <div class="details">
-                                                        <span class="date">19 Jun 2024 </span>
-                                                        <h4><a href="blog-single.html">Perfect Photo Clicking
-                                                                Idea You Must
-                                                                Know.</a></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="post">
-                                                    <div class="img-holder">
-                                                        <img src="assets/images/recent-posts/img-2.jpg" alt>
-                                                    </div>
-                                                    <div class="details">
-                                                        <span class="date">22 May 2024 </span>
-                                                        <h4><a href="blog-single.html">Best tourism site all
-                                                                over the world.</a>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <div class="post">
-                                                    <div class="img-holder">
-                                                        <img src="assets/images/recent-posts/img-3.jpg" alt>
-                                                    </div>
-                                                    <div class="details">
-                                                        <span class="date">12 Apr 2024 </span>
-                                                        <h4><a href="blog-single.html">Whats In Trend in Now
-                                                                Woman Fashion.</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget wpo-contact-widget">
-                                            <div class="widget-title">
-                                                <h3>Contact Us</h3>
-                                            </div>
-                                            <div class="contact-ft">
-                                                <ul>
-                                                    <li><i class="fi flaticon-location"></i>68D, Belsion Town
-                                                        2365 <br> Fna city, LH 3656, USA</li>
-                                                    <li><i class="fi flaticon-telephone"></i>+ 8 (123) 123 456
-                                                        789 <br>
-                                                        + 8 (123) 123 456 789</li>
-                                                    <li><i class="fi flaticon-email"></i>Bloggar@gmail.com</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {{--  #
+                            right sidebar
+                            --}}
                     </div>
                 </div>
             </div>

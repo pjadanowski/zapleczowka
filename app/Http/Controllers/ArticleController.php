@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         preg_match('/([^-]*)$/', $slug, $id); // after last -
 
-        return view('articles.show', [
+        return templateView('articles.show', [
             'article' => Article::findOrFail($id[0]),
         ]);
     }
