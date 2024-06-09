@@ -9,16 +9,19 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $latestArticles = Article::forCurrentInstance()->latest()->take(10)->get();
-        $categories = Category::withCount('articles')->forCurrentInstance()->whereHas('articles')->latest()->take(10)->get();
-
+        $latestArticles = Article::with('category')->forCurrentInstance()->latest()->take(10)->get();
+       
         return view('articles.index', [
             'latestArticles' => $latestArticles,
-            'categories' => $categories,
         ]);
     }
 
-    public function show(Article $article)
+    public function show(string $slug)
     {
+        preg_match('/([^-]*)$/', $slug, $id); // after last -
+
+        return view('articles.show', [
+            'article' => Article::findOrFail($id[0]),
+        ]);
     }
 }

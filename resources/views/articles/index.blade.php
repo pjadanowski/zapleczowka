@@ -5,16 +5,12 @@
     $name = $templateService->getTemplateName();
 @endphp
 
-@extends('components.layouts.app')
 
-@section('css')
-    @include("components.templates.{$name}.styles")
-@endsection
+@extends("components.templates.$name.layout")
 
-@section('js')
-    @include("components.templates.{$name}.scripts")
-@endsection
 
-@section('content')
+@section('templateContent')
+    {{-- @parent --}}
     @include("components.templates.{$name}.index")
 @endsection
+
