@@ -7,14 +7,7 @@ use App\Models\Category;
 
 class ArticleController extends Controller
 {
-    public function index()
-    {
-        $latestArticles = Article::with('category')->forCurrentInstance()->latest()->take(10)->get();
-       
-        return view('articles.index', [
-            'latestArticles' => $latestArticles,
-        ]);
-    }
+    
 
     public function show(string $slug)
     {

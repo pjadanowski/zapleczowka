@@ -3,3 +3,7 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
 }
+
+.mt-8 {
+    margin-top: 2rem/* 32px */;
+}

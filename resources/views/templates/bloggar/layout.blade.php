@@ -10,15 +10,22 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        @include('components.templates.bloggar.styles')
+
         @yield('css')
         @stack('css')
     </head>
     <body class="font-sans">
         <main>
+            @include('components.templates.bloggar.top-navbar')
             @yield('content')
             {{ $slot ?? ''}}
         </main>
 
+        
+        @include('components.templates.bloggar.scripts')
+        
         @yield('js')
         @stack('js')
     </body>

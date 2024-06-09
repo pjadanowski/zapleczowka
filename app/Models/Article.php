@@ -25,7 +25,7 @@ class Article extends Model
     public function excerpt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attr) => \Illuminate\Support\Str::limit(strip_tags($this->article), 100),
+            get: fn ($value, $attr) => \Illuminate\Support\Str::limit(strip_tags($this->article), 80),
         );
     }
 
@@ -34,6 +34,11 @@ class Article extends Model
         return Attribute::make(
             get: fn ($value, $attr) => $this->thumbnailImage ?? 'https://fakeimg.pl/640x360',
         );
+    }
+
+    public function show()
+    {
+        return route('articles.show', $this->slug);
     }
 
     public function scopeForCurrentInstance(Builder $builder)
