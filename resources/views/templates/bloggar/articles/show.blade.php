@@ -47,23 +47,21 @@
                             {{ $article->title }}
                         </h3>
               
-                        {!! $article->article !!}
+                        {!! $article->articleWithLink !!}
                     </div>
                     <div class="border-b border-[#ebebeb] mt-[75px] pb-[30px] text-white sm:mb-[40px]">
                         <div class="flex items-center">
-                            <span class="font-heading-font text-[#0a272c] font-semibold inline-block pr-[15px] uppercase">Share:
+                            <span class="font-heading-font text-[#0a272c] font-semibold inline-block pr-[15px] uppercase">Tagi:
                             </span>
                             <ul class="inline-block">
                                 <li class="float-left ml-[10px] sm:m-[2px] sm:ml-0"><a href="#" class="inline-block text-[13px] px-[18px] py-[2px] text-[#0a272c]
                                         bg-[#f5f5f5] rounded-[5px] font-normal uppercase transition-all
-                                        hover:text-[#3756f7]">TRAVELS</a>
+                                        hover:text-[#3756f7]">Biznes</a>
                                 </li>
                                 <li class="float-left ml-[10px] sm:m-[2px] sm:ml-0"><a href="#" class="inline-block text-[13px] px-[18px] py-[2px] text-[#0a272c]
                                         bg-[#f5f5f5] rounded-[5px] font-normal uppercase transition-all
-                                        hover:text-[#3756f7]">Lifestyle</a>
+                                        hover:text-[#3756f7]">Finanse</a>
                                 </li>
-                                <li class="float-left ml-[10px] sm:m-[2px] sm:ml-0"><a href="#" class="inline-block text-[13px] px-[18px] py-[2px] text-[#0a272c] bg-[#f5f5f5] rounded-[5px] font-normal uppercase transition-all hover:text-[#3756f7]">
-                                        Food</a></li>
                             </ul>
                         </div>
                     </div>

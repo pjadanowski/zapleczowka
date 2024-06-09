@@ -17,7 +17,7 @@
                             </li>
                             <!-- cats -->
                             @foreach ($categories as $c)
-                                <li><a href="{{ route('category.articles', $c) }}">{{ $c->name }}</a></li>
+                                <li><a href="{{ route('category.articles', $c->slug) }}">{{ $c->name }}</a></li>
                             @endforeach
                         </ul>
                     </div><!-- /dl-menuwrapper -->
@@ -64,7 +64,7 @@
                         </li>
                         @foreach ($categories->take(4) as $c)
                         <li class="relative inline-block">
-                            <a href="{{ route('category.articles', $c) }}" class="relative text-[20px] lg:text-[17px] py-[35px]
+                            <a href="{{ route('category.articles', $c->slug) }}" class="relative text-[20px] lg:text-[17px] py-[35px]
                                  xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
                                     text-[#232f4b] block capitalize
                                     font-heading-font font-medium transition-all
