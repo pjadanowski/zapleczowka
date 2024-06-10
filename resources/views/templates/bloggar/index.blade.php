@@ -22,7 +22,7 @@
                                 <img src="{{ $firstArticle->thumbnailImg }}" alt="" class="img img-responsive w-full rounded-[15px] scale-[1] transition-all group-hover:scale-[1.3]">
                                 <div class="absolute left-0 bottom-0 p-[30px] z-20 col:p-3">
                                     <div class="p-[3px_15px] text-center text-xl rounded-[5px] inline-block font-bold text-[#003aae] 
-                                    bg-[rgba(255,255,255,0.8)] col:text-base">{{ $firstArticle->category->name }}</div>
+                                    bg-[rgba(255,255,255,0.8)] col:text-base">{{ $firstArticle->category?->name }}</div>
                                     <h2 class="text-[35px] text-white mt-[15px] leading-10 col:text-xl font-semibold">
                                         <a href="{{ $firstArticle->show() }}">
                                             {{ $firstArticle->title }}
@@ -52,7 +52,7 @@
                                 <img src="{{ $secondArticle->thumbnailImg }}" alt="" class="img img-responsive w-full rounded-[15px] scale-[1] transition-all group-hover:scale-[1.3]">
                                 <div class="absolute left-0 bottom-0 p-[30px] z-20 col:p-3">
                                     <div class="p-[3px_15px] text-center text-xl rounded-[5px] inline-block font-bold text-[#003aae] 
-                                    bg-[rgba(255,255,255,0.8)] col:text-base">{{ $secondArticle->category->name }}</div>
+                                    bg-[rgba(255,255,255,0.8)] col:text-base">{{ $secondArticle->category?->name }}</div>
                                     <h2 class="text-[35px] text-white mt-[15px] leading-10 col:text-xl font-semibold col:mt-[10px]">
                                         <a href="{{ route('articles.show', $secondArticle->slug) }}">
                                             {{ $secondArticle->title }}

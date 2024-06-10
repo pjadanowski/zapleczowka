@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 
 Route::post('logo', [\App\Http\Controllers\Api\LogoController::class, 'update']);
 
-// Route::apiResource('/articles', [])
+// Route::post('sync', [\App\Http\Controllers\Api\SyncController::class, 'update']);

@@ -8,8 +8,9 @@ class PageController extends Controller
 {
     public function index()
     {
-        $latestArticles = Article::with('category')->select(['id', 'title', 'created_at', 'category_id', 'article'])->forCurrentInstance()->latest()->get();
-       
+        $latestArticles = Article::with(['category'])->latest()->limit(30)->get();
+
+        //    dd($latestArticles);
         return templateView('index', [
             'latestArticles' => $latestArticles,
         ]);

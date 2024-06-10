@@ -7,7 +7,7 @@
                     rounded-[6px] transition-all group-hover:grayscale-[100%] group-hover:scale-[1.2]">
             <div
                 class="absolute left-[15px] top-[15px] p-[4px_25px_2px] bg-[#3756f7] uppercase text-white text-[14px] rounded-[5px]">
-                {{ $article->category->name }}</div>
+                {{ $article->category?->name }}</div>
         </div>
         <div class="pt-3">
             <ul class="flex mb-[15px] items-center">

@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         setlocale(LC_TIME, config('app.locale'));
         Carbon::setLocale(config('app.locale'));
 
-        $categories = \App\Models\Category::withCount('articles')->forCurrentInstance()->whereHas('articles')->latest()->take(10)->get();
+        $categories = \App\Models\Category::withCount('articles')->latest()->get();
 
         View::share('categories', $categories);
     }

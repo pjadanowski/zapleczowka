@@ -13,7 +13,8 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $table = 'resource_hub_articles';
+    // protected $table = 'resource_hub_articles';
+    protected $guarded = [];
 
     public function slug(): Attribute
     {
@@ -25,7 +26,7 @@ class Article extends Model
     public function excerpt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attr) => \Illuminate\Support\Str::limit(strip_tags($this->article), 80),
+            get: fn ($value, $attr) => \Illuminate\Support\Str::limit(strip_tags($this->body), 80),
         );
     }
 
@@ -33,7 +34,7 @@ class Article extends Model
     {
         $re = '/(\r?\n)+/m';
 
-        $result = $this->article;
+        $result = $this->body;
         $links = $this->links;
 
         foreach ($links as $link) {
@@ -54,13 +55,13 @@ class Article extends Model
      */
     public function hasLinkInserted(string $link, ?string $content = null): bool
     {
-        return str_contains($content ?? $this->article, $link);
+        return str_contains($content ?? $this->body, $link);
     }
 
     public function thumbnailImg(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attr) => $this->thumbnailImage ?? 'https://fakeimg.pl/640x360',
+            get: fn ($value, $attr) => $this->thumbnail_image ?? 'https://fakeimg.pl/640x360',
         );
     }
 
@@ -69,10 +70,10 @@ class Article extends Model
         return route('articles.show', $this->slug);
     }
 
-    public function scopeForCurrentInstance(Builder $builder)
-    {
-        $builder->where('resource_hub_id', env('INSTANCE_ID', null));
-    }
+    // public function scopeForCurrentInstance(Builder $builder)
+    // {
+    //     $builder->where('resource_hub_id', env('INSTANCE_ID', null));
+    // }
 
     public function category(): BelongsTo
     {
@@ -81,6 +82,7 @@ class Article extends Model
 
     public function links(): BelongsToMany
     {
-        return $this->belongsToMany(Link::class, 'resource_hub_articles_links')->using(ArticleLink::class);
+        return $this->belongsToMany(Link::class)->using(ArticleLink::class);
+        // prod: 'resource_hub_articles_links'
     }
 }

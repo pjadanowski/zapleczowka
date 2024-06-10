@@ -13,7 +13,9 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $table = 'resource_hub_categories';
+    // protected $table = 'resource_hub_categories';
+
+    protected $guarded = [];
 
     public function slug(): Attribute
     {
@@ -22,10 +24,10 @@ class Category extends Model
         );
     }
 
-    public function scopeForCurrentInstance(Builder $builder)
-    {
-        $builder->where('resource_hub_id', env('INSTANCE_ID', null));
-    }
+    // public function scopeForCurrentInstance(Builder $builder)
+    // {
+    //     $builder->where('resource_hub_id', env('INSTANCE_ID', null));
+    // }
 
     public function articles(): HasMany
     {

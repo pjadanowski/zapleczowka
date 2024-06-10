@@ -10,7 +10,7 @@ class ArticleLink extends Pivot
 {
     use HasFactory;
 
-    protected $table = 'resource_hub_articles_links';
+    // protected $table = 'resource_hub_articles_links';
 
     public function article(): BelongsTo
     {
