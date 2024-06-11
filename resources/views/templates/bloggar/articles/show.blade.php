@@ -47,7 +47,9 @@
                             {{ $article->title }}
                         </h3>
               
-                        {!! $article->articleWithLink !!}
+                        <div class="prose xl:prose-lg !max-w-full">
+                            {!! $article->contentWithLink !!}
+                        </div>
                     </div>
                     <div class="border-b border-[#ebebeb] mt-[75px] pb-[30px] text-white sm:mb-[40px]">
                         <div class="flex items-center">

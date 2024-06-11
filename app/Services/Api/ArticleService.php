@@ -25,22 +25,20 @@ class ArticleService extends ParentApiService
 
                 if ($found === null) {
                     // create
-                    Article::insert([
-                        'title'                => $article['title'],
-                        'url'                  => $article['guid'],
-                        'thumbnail_image'      => '',
-                        'body'                 => $article['article'],
-                        'seo_app_id'           => $article['id'],
-                        'status'               => $article['status'],
-                        'category_id'          => $categories->where('seo_app_id', $article['category_id'])->first()?->id ?? null,
-                        'updated_at'           => $article['updated_at'],
-                        'created_at'           => $article['created_at'],
+                    Article::create([
+                        'title'                   => $article['title'],
+                        'thumbnail_image'         => '',
+                        'content'                 => $article['article'],
+                        'seo_app_id'              => $article['id'],
+                        'status'                  => $article['status'],
+                        'category_id'             => $categories->where('seo_app_id', $article['category_id'])->first()?->id ?? null,
+                        'updated_at'              => $article['updated_at'],
+                        'created_at'              => $article['created_at'],
                     ]);
                 } else {
                     // found -> update
                     $found->forceFill([
                         'title'                => $article['title'],
-                        'url'                  => $article['guid'],
                         'thumbnail_image'      => '',
                         'body'                 => $article['article'],
                         'seo_app_id'           => $article['id'],

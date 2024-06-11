@@ -12,7 +12,7 @@
         <li class="text-lg font-normal relative sm:text-base mb-5 pb-5 border-b border-[#eef0fc]">
             <a href="{{ route('category.articles', $category->slug)}}"
                 class="block text-[#474f62] relative pl-7 before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:content-['\e649'] before:font-['themify'] before:text-base transition-all hover:text-[#3756f7] hover:before:text-[#3756f7] before:transition-all">
-                {{ $category->name }}
+                {!! $category->name !!}
                 <span class="absolute right-0">({{ $category->articles_count }})</span></a>
         </li>
         @endforeach

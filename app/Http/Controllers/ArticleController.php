@@ -11,10 +11,10 @@ class ArticleController extends Controller
 
     public function show(string $slug)
     {
-        preg_match('/([^-]*)$/', $slug, $id); // after last -
+        //preg_match('/([^-]*)$/', $slug, $id); // after last -
 
         return templateView('articles.show', [
-            'article' => Article::findOrFail($id[0]),
+            'article' => Article::where('slug', $slug)->firstOrFail(),
         ]);
     }
 }

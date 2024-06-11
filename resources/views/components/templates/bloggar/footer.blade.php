@@ -59,7 +59,7 @@
                             <h3 class="text-[25px] text-white capitalize relative font-heading-font font-bold">Ostatnie wiadomości</h3>
                         </div>
                         <ul>
-                            @foreach (\App\Models\Article::inRandomOrder()->select(['id', 'title', 'created_at'])->limit(2)->get() as $art)
+                            @foreach (\App\Models\Article::inRandomOrder()->select(['id', 'title', 'slug', 'created_at'])->limit(2)->get() as $art)
                                 
                             <li class="mb-[15px] ">
                                 <h4 class="mb-[5px]">

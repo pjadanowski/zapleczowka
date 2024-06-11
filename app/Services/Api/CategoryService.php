@@ -45,4 +45,15 @@ class CategoryService extends ParentApiService
             dd($e->getMessage());
         }
     }
+
+    public function updateOrCreate(array $category)
+    {
+        return Category::updateOrCreate([
+            'seo_app_id' => $category['id'],
+        ], [
+            'name'       => $category['name'],
+            'updated_at' => $category['updated_at'],
+            'created_at' => $category['created_at'],
+        ]);
+    }
 }

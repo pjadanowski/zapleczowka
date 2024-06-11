@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,29 +13,42 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Article extends Model
 {
     use HasFactory;
+    use HasSlug;
 
     // protected $table = 'resource_hub_articles';
     protected $guarded = [];
 
-    public function slug(): Attribute
+    protected static function booted()
     {
-        return Attribute::make(
-            get: fn ($value, $attr) => \Illuminate\Support\Str::slug($this->title) . '-' . $this->id,
-        );
+        static::creating(function (Article $article) {
+            $article->slug = $article->findSlug('title');
+        });
+
+        static::saving(function (Article $article) {
+            $article->slug = $article->findSlug('title');
+        });
+
     }
+
+    // public function slug(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value, $attr) => \Illuminate\Support\Str::slug($this->title) . '-' . $this->id,
+    //     );
+    // }
 
     public function excerpt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attr) => \Illuminate\Support\Str::limit(strip_tags($this->body), 80),
+            get: fn ($value, $attr) => \Illuminate\Support\Str::limit(strip_tags($this->content), 80),
         );
     }
 
-    public function articleWithLink(): Attribute
+    public function contentWithLink(): Attribute
     {
         $re = '/(\r?\n)+/m';
 
-        $result = $this->body;
+        $result = $this->content;
         $links = $this->links;
 
         foreach ($links as $link) {
@@ -55,13 +69,13 @@ class Article extends Model
      */
     public function hasLinkInserted(string $link, ?string $content = null): bool
     {
-        return str_contains($content ?? $this->body, $link);
+        return str_contains($content ?? $this->content, $link);
     }
 
     public function thumbnailImg(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attr) => $this->thumbnail_image ?? 'https://fakeimg.pl/640x360',
+            get: fn ($value, $attr) => !empty($this->thumbnail_image) ?: 'https://fakeimg.pl/640x360',
         );
     }
 

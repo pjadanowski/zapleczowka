@@ -713,8 +713,6 @@
         WHEN DOCUMENT LOADING
     ==========================================================================*/
     $(window).on("load", function () {
-        preloader();
-
         masonryGridSetting();
 
         smallNavFunctionality();

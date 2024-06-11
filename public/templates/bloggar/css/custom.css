@@ -23,5 +23,21 @@ body {
     justify-content: center;
 }
 .mr-4 {
-    margin-right: 1rem/* 16px */;
+    margin-right: 1rem /* 16px */;
+}
+
+.\!max-w-full {
+    max-width: 100% !important;
+}
+
+.h-1\/2 {
+    height: 50%;
+}
+
+.inset-0 {
+    inset: 0px;
+}
+.before\:inset-0::before {
+    content: var(--tw-content);
+    inset: 0px;
 }

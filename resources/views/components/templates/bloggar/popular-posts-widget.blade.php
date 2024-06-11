@@ -1,5 +1,5 @@
   @php
-    $articles = \App\Models\Article::inRandomOrder()->select(['id', 'title', 'created_at'])->limit(5)->get();
+    $articles = \App\Models\Article::inRandomOrder()->select(['id', 'title', 'slug', 'created_at'])->limit(5)->get();
 
   @endphp
   

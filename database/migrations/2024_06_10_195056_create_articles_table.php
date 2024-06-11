@@ -15,9 +15,9 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('url');
+            $table->string('slug')->unique();
             $table->string('thumbnail_image')->nullable();
-            $table->longText('body')->nullable();
+            $table->longText('content')->nullable();
             $table->unsignedBigInteger('seo_app_id')->index();
             $table->unsignedInteger('status')->nullable();
             $table->foreignIdFor(Category::class)->nullable()->index()->constrained()->nullOnDelete();

@@ -8446,7 +8446,7 @@ h6 {
 }
 
 .before\:content-\[\'\\e649\'\]::before {
-    --tw-content: "\e649";
+    --tw-content: "-";
     content: var(--tw-content);
 }
 

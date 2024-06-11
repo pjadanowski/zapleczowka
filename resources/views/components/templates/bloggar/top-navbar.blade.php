@@ -27,7 +27,7 @@
                             <img class="" src="{{ asset(config('templates.logo_path')) }}" alt="{{ config('app.name') }}"></a>
                     </div>
 
-                    <ul class="md:hidden">
+                    <ul class="sm:hidden md:block">
                         <li class="relative inline-block group">
                             <a href="/" class="relative text-[20px] lg:text-[17px] py-[35px]
                                  xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
@@ -73,7 +73,7 @@
                                    before:bg-[#3756f7] before:content
                                    before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
                                    hover:before:opacity-100 hover:before:visible
-                                ">{{ $c->name }}</a>
+                                ">{!! $c->name !!}</a>
                         </li>
                         @endforeach
                        
