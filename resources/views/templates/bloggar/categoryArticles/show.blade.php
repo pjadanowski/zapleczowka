@@ -10,14 +10,14 @@
                     <div class="col-span-12">
                         <div class="text-center">
                             <h2 class="text-6xl text-white mt-[-10px] mb-[20px] sm:text-3xl sm:mb-[10px]">
-                                {{ $category->name }}
+                                {!! $category->name !!}
                             </h2>
                             <ul class="">
                                 <li class="inline-block px-[5px] text-white relative text-xl font-heading-font sm:text-lg after:content-['/'] after:left-[7px]">
                                     <a href="/">Home</a>
                                 </li>
                                 <li class="text-[#cbd4fd] inline-block px-[5px]  relative text-xl font-heading-font sm:text-lg ">
-                                    <span> {{ $category->name }}</span></li>
+                                    <span> {!! $category->name !!}</span></li>
                             </ul>
                         </div>
                     </div>

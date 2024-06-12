@@ -21,6 +21,7 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'title'       => ['required'],
             'content'     => ['required'],
@@ -35,7 +36,6 @@ class ArticleController extends Controller
             'seo_app_id'       => $request->id,
             'title'            => $request->title,
             'content'          => $request->content,
-            'url'              => $request->url,
             'status'           => $request->status,
             'category_id'      => $category->id,
         ]);
@@ -61,12 +61,11 @@ class ArticleController extends Controller
 
         $category = $this->categoryService->updateOrCreate($request->category);
 
-        $updated = Article::where('seo_app_id', $id)->updateOrCreate([
+        $updated = Article::updateOrCreate([
             'seo_app_id'=> $id,
         ], [
             'title'            => $request->title,
             'content'          => $request->content,
-            'url'              => $request->url,
             'status'           => $request->status,
             'category_id'      => $category->id,
         ]);
@@ -76,6 +75,8 @@ class ArticleController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        $deleted = Article::where('seo_app_id', $id)->delete();
+
+        return response()->json(['deleted' => $deleted!== null]);
     }
 }
