@@ -24,10 +24,6 @@ abstract class ParentApiService
 
     private function baseUrl(): string
     {
-        if (app()->isProduction()) {
-            return env('SEO_APP_URL') . '/api/v1/';
-        }
-
-        return 'localhost:8007/api/v1/';
+        return env('SEO_APP_URL', 'localhost:8007/api/v1') . '/api/v1/';
     }
 }
