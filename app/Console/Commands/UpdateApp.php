@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\Process;
+
+// use Symfony\Component\Process\Process;
 
 class UpdateApp extends Command
 {
@@ -79,25 +81,21 @@ class UpdateApp extends Command
         $this->info('Succesfully updated the application.');
     }
 
-    /**
-     * Run git pull process
-     *
-     * @return bool
-     */
-    private function runPull()
+    private function runPull(): bool
     {
-        $process = new Process(['git', 'pull']);
+        // $process = new Process(['git', 'pull']); // symfony version
         $this->info("Running 'git pull'");
+        $result = Process::run('git pull');
 
-        $process->run(function ($type, $buffer) {
-            $this->pullLog[] = $buffer;
+        if (str_ends_with($result->output(), 'public')) {
+            $result = Process::run('cd .. && git pull');
+        }
 
-            if ($buffer == "Already up to date.\n") {
-                $this->alreadyUpToDate = true;
-            }
-        });
+        if (str_contains($result->output(), 'Already up to date')) {
+            $this->alreadyUpToDate = true;
+        }
 
-        return $process->isSuccessful();
+        return $result->successful();
     }
 
     /**
@@ -107,13 +105,11 @@ class UpdateApp extends Command
      */
     private function runComposer()
     {
-        $process = new Process(['composer', 'install']);
         $this->info("Running 'composer install'");
+        $process = Process::run('composer install');
 
-        $process->run(function ($type, $buffer) {
-            $this->composerLog[] = $buffer;
-        });
+        $this->composerLog[] = $process->output();
 
-        return $process->isSuccessful();
+        return $process->successful();
     }
 }
