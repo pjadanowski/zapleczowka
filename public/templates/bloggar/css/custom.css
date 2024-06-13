@@ -41,9 +41,8 @@ body {
     content: var(--tw-content);
     inset: 0px;
 }
-
-body {
-    background-color: chocolate;
+.logo {
+    max-height: 120px;
 }
 
 @media (min-width: 768px) {

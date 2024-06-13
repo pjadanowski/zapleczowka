@@ -24,7 +24,8 @@
 
                     <div class="w-[195px] md:w-[280px] sm:w-[200px] col:w-[150px] col:ml-[50px]">
                         <a class="flex items-center md:justify-center text-white" href="/">
-                            <img class="" src="{{ asset(config('templates.logo_path')) }}" alt="{{ config('app.name') }}"></a>
+                            <img class="logo" src="{{ asset(config('templates.logo_path')) }}" alt="{{ config('app.name') }}">
+                        </a>
                     </div>
 
                     <ul class="sm:hidden md:block">

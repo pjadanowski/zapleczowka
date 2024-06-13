@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Services\TemplateService;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Services\LogoService;
+use App\Http\Controllers\Controller;
 
 class LogoController extends Controller
 {
-
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        if (!$request->hasFile('logo')) {
+        if (! $request->hasFile('logo')) {
             return response()->json([], 400);
         }
 
@@ -19,10 +19,12 @@ class LogoController extends Controller
             'logo' => ['image'],
         ]);
         $logo = $request->file('logo');
-        $path = $request->file('logo')->storeAs(config('app.name') . '_logo.' . $logo->getClientOriginalExtension());
+        // $path = $request->file('logo')->storeAs(config('app.name') . '_logo.' . $logo->getClientOriginalExtension());
 
         // update settings
-        (new TemplateService)->updateLogoPath($path);
+        $logoService = new LogoService;
+        $path = $logoService->storeLogo($logo);
+        $logoService->updateLogoPath(Str::after($path, 'public'));
 
         return response()->json(['status' => 'Logo updated']);
     }

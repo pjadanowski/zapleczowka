@@ -3,6 +3,6 @@
 return array (
   'version' => '1',
   'name' => 'bloggar',
-  'logo_path' => 'logo/path2.png',
-  'description' => '', // description in footer
+  'logo_path' => '/images/logo.webp',
+  'description' => '',
 );
