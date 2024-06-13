@@ -24,7 +24,7 @@ class UpdateApp extends Command
     /**
      * Is the code already updated or not
      */
-    private bool $alreadyUpToDate;
+    private bool $alreadyUpToDate = false;
 
     /**
      * Log from git pull
