@@ -41,6 +41,7 @@ body {
     content: var(--tw-content);
     inset: 0px;
 }
+
 body {
     background-color: chocolate;
 }
