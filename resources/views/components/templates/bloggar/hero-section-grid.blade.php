@@ -11,9 +11,9 @@
             @if ($firstArticle)                            
             <div class="col-span-12 md:!col-span-6 row-span-full">
                 <div class="relative rounded-[15px] overflow-hidden z-10 group before:absolute before:inset-0 before:w-full
-                    before:h-full before:bg-[rgba(7,7,7,0.4)] before:rounded-[15px] before:z-20">
+                    before:h-full before:bg-[rgba(7,7,7,0.4)] before:rounded-[15px] before:z-20 h-full">
                     <img src="{{ $firstArticle->thumbnailImg }}" alt="" class="img img-responsive w-full rounded-[15px] scale-[1] transition-all group-hover:scale-[1.3]">
-                    <div class="absolute inset-0 p-[30px] z-20 col:p-3">
+                    <div class="absolute bottom-0 p-[30px] z-20 col:p-3">
                         <div class="p-[3px_15px] text-center text-xl rounded-[5px] inline-block font-bold text-[#003aae] 
                         bg-[rgba(255,255,255,0.8)] col:text-base">{{ $firstArticle->category?->name }}</div>
                         <h2 class="text-[35px] text-white mt-[15px] leading-10 col:text-xl font-semibold">
