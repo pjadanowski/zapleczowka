@@ -24,6 +24,6 @@ abstract class ParentApiService
 
     private function baseUrl(): string
     {
-        return env('SEO_APP_URL', 'localhost:8007/api/v1') . '/api/v1/';
+        return env('SEO_APP_URL', 'localhost:8007') . '/api/v1/';
     }
 }

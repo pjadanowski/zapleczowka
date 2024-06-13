@@ -15,6 +15,7 @@ class SeoAppMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // base check if request came from seo app
         abort_if(! $request->hasHeader('x-seo-app') && $request->header('x-seo-app') !== 'true', 403);
 
         return $next($request);

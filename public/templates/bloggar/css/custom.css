@@ -41,3 +41,8 @@ body {
     content: var(--tw-content);
     inset: 0px;
 }
+@media (min-width: 768px) {
+    .md\:\!col-span-6 {
+        grid-column: span 6 / span 6 !important;
+    }
+}

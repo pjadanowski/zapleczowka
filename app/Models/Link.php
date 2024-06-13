@@ -9,13 +9,22 @@ class Link extends Model
 {
     use HasFactory;
 
-     protected $table = 'links';
+    protected $table = 'links';
 
-    // public function linkGroup()
-    // {
-    //     return $this->belongsTo(LinkGroup::class);
-    // }
+    protected $fillable = [
+        'name', // deprecated -> dont use it anymore
+        'anchor', // <a href={url}>{anchor}</a>
+        'url', // a href="{url}"
+        'seo_app_id',
+        'link_group_id',
+        'order',
+        'status',
+    ];
 
+    public function linkGroup()
+    {
+        return $this->belongsTo(LinkGroup::class);
+    }
 
     public function articleLinks()
     {

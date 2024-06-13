@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
+use App\Services\Api\LinkService;
 use App\Http\Controllers\Controller;
 use App\Services\Api\ArticleService;
-use Illuminate\Http\Request;
 
 class SyncController extends Controller
 {
@@ -14,12 +15,8 @@ class SyncController extends Controller
      */
     public function update(Request $request)
     {
-        // base check if request came from seo app
-        if (! $request->hasHeader('x-seo-app')) {
-            abort(403);
-        }
-
         // sync articles
         (new ArticleService())->sync();
+        (new LinkService())->sync();
     }
 }

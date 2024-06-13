@@ -54,7 +54,7 @@ class ArticleService extends ParentApiService
                 }
             }
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            return $e->getMessage();
         }
     }
 }

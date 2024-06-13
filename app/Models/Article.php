@@ -27,7 +27,6 @@ class Article extends Model
         static::saving(function (Article $article) {
             $article->slug = $article->findSlug('title');
         });
-
     }
 
     // public function slug(): Attribute
@@ -46,16 +45,22 @@ class Article extends Model
 
     public function contentWithLink(): Attribute
     {
-        $re = '/(\r?\n)+/m';
-
         $result = $this->content;
         $links = $this->links;
 
         foreach ($links as $link) {
             if (! $this->hasLinkInserted($link->anchor)) {
-                $subst = "$1 $link $1";
-                $result = preg_replace($re, $subst, $result, 1); // todo: replace with <a href="link->anchor">link->name</a>";
-                // what if not found and not replaced ?
+                $url =  !empty($link->url) ? $link->url : $link->name;
+                $insert = "<a href=\"{$url}\">$link->anchor</a>";
+                $re = '/(\r?\n)+/m';
+                $subst = "$1 $insert $1";
+                $result = preg_replace($re, $subst, $result, 1, $numberOfReplacements); // todo: replace with <a href="link->anchor">link->name</a>";
+     
+                // if not found and not replaced
+                if ($numberOfReplacements === 0) {
+      
+                    $result = $this->insertAfterSpace($result, $insert);
+                }
             }
         }
 
@@ -72,10 +77,33 @@ class Article extends Model
         return str_contains($content ?? $this->content, $link);
     }
 
+    public function insertAfterSpace(string $originalString, string $insertion, int $charactersToInsertAfter = 1000)
+    {
+        // make it more random
+        $charactersToInsertAfter += (($this->id * 22) % 200);
+
+        // Check if the string is longer than the specified number of characters
+        if (strlen($originalString) > $charactersToInsertAfter) {
+            // Find the first '. ' after the specified number of characters
+            $position = strpos($originalString, '. ', $charactersToInsertAfter);
+
+            // link    color: #4981ef;
+            // If a space is found, insert the content after the space
+            if ($position !== false) {
+                $modifiedString = substr_replace($originalString, '. '. $insertion, $position, 0);
+
+                return $modifiedString;
+            }
+        }
+
+        // If no '. ' is found or the string is shorter than the specified number of characters, return the original string
+        return $originalString;
+    }
+
     public function thumbnailImg(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attr) => !empty($this->thumbnail_image) ?: 'https://fakeimg.pl/640x360',
+            get: fn ($value, $attr) => ! empty($this->thumbnail_image) ?: 'https://fakeimg.pl/640x360',
         );
     }
 
