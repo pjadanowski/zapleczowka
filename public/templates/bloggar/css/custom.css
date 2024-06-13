@@ -41,6 +41,9 @@ body {
     content: var(--tw-content);
     inset: 0px;
 }
+body {
+    background-color: chocolate;
+}
 
 @media (min-width: 768px) {
     .md\:\!col-span-6 {
