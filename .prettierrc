@@ -1,0 +1,17 @@
+{
+    "tabWidth": 4,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "plugins": [
+        "./node_modules/prettier-plugin-blade"
+    ],
+    "overrides": [
+        {
+            "files": "*.blade.php",
+            "vscodeLanguageIds": ["blade"],
+            "options": {
+                "parser": "blade"
+            }
+        }
+    ]
+}

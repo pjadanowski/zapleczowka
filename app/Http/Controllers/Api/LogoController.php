@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Services\LogoService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class LogoController extends Controller
 {
@@ -24,9 +25,9 @@ class LogoController extends Controller
         // update settings
         $logoService = new LogoService;
         $path = $logoService->storeLogo($logo);
-        $logoService->updateLogoPath(Str::after($path, 'public'));
+        $logoService->updateLogoPath($path = Str::after($path, 'public/'));
 
-        return response()->json(['status' => 'Logo updated']);
+        return response()->json(['status' => 'Logo updated', 'path' => url($path)]);
     }
 
     public function destroy(string $id)

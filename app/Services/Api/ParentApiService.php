@@ -11,10 +11,8 @@ abstract class ParentApiService
 
     public function __construct()
     {
-        $this->http = Http::withHeaders([
-            'Accept'        => 'application/json',
-            'Content-Type'  => 'application/json',
-        ])
+        $this->http = Http::acceptJson()
+            ->contentType('application/json')
             ->withToken(env('SEO_APP_TOKEN'))
             ->baseUrl($this->baseUrl())
             ->retry(5, 500)
