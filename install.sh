@@ -32,4 +32,4 @@ fi
 /opt/alt/php83/usr/bin/php artisan migrate
 /opt/alt/php83/usr/bin/php artisan optimize
 
-/opt/alt/php83/usr/bin/php artisan app:env:set-production
+/opt/alt/php83/usr/bin/php artisan app:env-set-production
