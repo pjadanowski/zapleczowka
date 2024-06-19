@@ -17,8 +17,6 @@ fi
 #npm install
 #npm run prod
 
-/opt/alt/php83/usr/bin/php artisan optimize
-
 # database
 database_file="database/database.sqlite"
 if [ -f "$database_file" ]
@@ -30,4 +28,5 @@ else
     touch database_file
 fi
 
-php artisan migrate
+/opt/alt/php83/usr/bin/php artisan migrate
+/opt/alt/php83/usr/bin/php artisan optimize
