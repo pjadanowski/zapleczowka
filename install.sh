@@ -10,13 +10,14 @@ else
     cp .env.example .env
 fi
 
-composer install --no-dev
-php artisan key:generate
+/opt/alt/php83/usr/bin/php /usr/local/bin/composer install --no-dev
 
-npm install
-npm run prod
+/opt/alt/php83/usr/bin/php artisan key:generate
 
-php artisan optimize
+#npm install
+#npm run prod
+
+/opt/alt/php83/usr/bin/php artisan optimize
 
 # database
 database_file="database/database.sqlite"

@@ -15,4 +15,9 @@ class PageController extends Controller
             'latestArticles' => $latestArticles,
         ]);
     }
+
+    public function contact()
+    {
+        return templateView('contact', []);
+    }
 }

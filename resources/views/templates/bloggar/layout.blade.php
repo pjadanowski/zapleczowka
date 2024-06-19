@@ -17,7 +17,7 @@
         @stack('css')
     </head>
     <body class="font-sans">
-        <main>
+        <main>       
             @include('components.templates.bloggar.top-navbar')
             @yield('content')
             {{ $slot ?? ''}}

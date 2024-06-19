@@ -1,4 +1,6 @@
- 
+    @php
+        $categories = \App\Models\Category::withCount('articles')->latest()->get();
+    @endphp
   <div class="mb-7 p-7 border-[#eef0fc] border">
     <h3 class="text-2xl text-[#232f4b] relative capitalize pb-5 mb-5
         before:absolute before:left-0 before:bottom-0 before:w-[55px] before:h-[4px]

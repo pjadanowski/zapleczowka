@@ -36,7 +36,7 @@
                                 before:top-[50%] before:-translate-y-1/2 before:-z-[1] before:w-[5px]
                                 before:h-[2px] before:bg-[#cbcbcb] before:transition-all before:duration-300
                                 hover:before:bg-[#3756f7] group">
-                                <a href="/contact" class="text-[16px] transition-all text-white 
+                                <a href="{{ route('contact') }}" class="text-[16px] transition-all text-white 
                                     duration-300 group-hover:text-[#3756f7]">
                                     Kontakt
                                 </a>

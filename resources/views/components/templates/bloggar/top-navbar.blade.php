@@ -1,4 +1,7 @@
-        <header>
+    @php
+        $categories = \App\Models\Category::withCount('articles')->latest()->get();
+    @endphp
+<header>
             {{-- topbar news placeholder--}}
             {{-- /topbar news --}}
             <div class="wraper">
@@ -12,7 +15,7 @@
                             <li>
                                 <a href="#">FAQ</a>
                                 <ul class="dl-submenu">
-                                    <li><a href="/contact">Kontakt</a></li>
+                                    <li><a href="{{ route('contact') }}">Kontakt</a></li>
                                 </ul>
                             </li>
                             <!-- cats -->
@@ -55,7 +58,7 @@
                                     shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09);] transition-all opacity-0 invisible
                                     group-hover:opacity-100 group-hover:top-full group-hover:visible ">
                                 <li>
-                                    <a href="/contact" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
+                                    <a href="{{ route('contact') }}" class="text-[18px] lg:text-[16px] inline-block  px-[15px] capitalize py-1
                                             text-[#232f4b] group relative overflow-hidden font-medium transition-all
                                             after:absolute after:left-[15px] after:bottom-0 after:w-0 after:h-[2px]
                                             after:content after:bg-[#3756f7] after:transition-all font-heading-font

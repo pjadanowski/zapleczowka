@@ -312,7 +312,7 @@
                         <div class="bg-[#3756f7] p-[30px_40px] lg:p-5">
                             <h2 class="text-3xl font-bold text-left text-white mb-5">Jak możemy Ci pomóc?</h2>
                             <p class="text-white text-lg mb-3">Jeśli potrzebujesz pomocy napisz do nas. </p>
-                            <a href="/contact" class="inline-block text-white p-[10px_20px] border border-white text-[18px]
+                            <a href="{{ route('contact') }}" class="inline-block text-white p-[10px_20px] border border-white text-[18px]
                                 pr-24 relative mt-3 before:absolute before:text-[18px] before:right-[15px] before:top-1/2 
                                 before:-translate-y-1/2 before:font-['themify'] before:content-['\e628']
                                 ">Kontakt</a>
