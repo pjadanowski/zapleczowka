@@ -19,7 +19,7 @@ class SyncDataCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Syncs all the data from seo app';
 
     /**
      * Execute the console command.
