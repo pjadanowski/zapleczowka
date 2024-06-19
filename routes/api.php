@@ -16,6 +16,7 @@ Route::group([
     'prefix'     => '/v1',
 ], function () {
     Route::post('/app/update', [\App\Http\Controllers\Api\UpdateAppController::class, 'pull']);
+    Route::post('env/update', [\App\Http\Controllers\Api\EnvController::class, 'update']);
     Route::post('logo', [\App\Http\Controllers\Api\LogoController::class, 'update']);
 
     Route::post('articles', [\App\Http\Controllers\Api\ArticleController::class, 'store']);
