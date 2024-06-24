@@ -13,7 +13,7 @@ abstract class ParentApiService
     {
         $this->http = Http::acceptJson()
             ->contentType('application/json')
-            ->withToken(env('SEO_APP_TOKEN'))
+            ->withToken(env('RESOURCE_HUB_ACCESS_TOKEN'))
             ->baseUrl($this->baseUrl())
             ->retry(5, 500)
             ->withoutVerifying()

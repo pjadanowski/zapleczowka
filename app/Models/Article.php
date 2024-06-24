@@ -112,11 +112,6 @@ class Article extends Model
         return route('articles.show', $this->slug);
     }
 
-    // public function scopeForCurrentInstance(Builder $builder)
-    // {
-    //     $builder->where('resource_hub_id', env('INSTANCE_ID', null));
-    // }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

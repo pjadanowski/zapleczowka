@@ -29,7 +29,8 @@ class EnvSetProductionCommand extends Command
     {
         $result = Process::run('pwd');
         $pwd = $result->output();
-        $domain = trim(Str::afterLast($pwd, '/'));
+        $domain = trim(Str::after($pwd, '/domains'));
+        $domain = rtrim($domain, '/public_html');
 
         $env = file_get_contents(base_path('.env'));
 

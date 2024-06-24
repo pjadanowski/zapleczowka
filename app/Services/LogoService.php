@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 
@@ -27,13 +25,6 @@ class LogoService
 
     public function updateLogoPath(string $logoPath)
     {
-        $path = config_path('templates.php');
-        $array = include $path;
-
-        Arr::set($array, 'logo_path', $logoPath);
-
-        File::put($path, "<?php\n\nreturn " . var_export($array, true) . ';');
-
-        Artisan::call('config:clear');
+        (new TemplateService)->updateTemplateConfig('logo_path', $logoPath);
     }
 }

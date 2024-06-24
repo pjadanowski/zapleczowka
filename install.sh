@@ -33,3 +33,5 @@ fi
 /opt/alt/php83/usr/bin/php artisan optimize
 
 /opt/alt/php83/usr/bin/php artisan app:env-set-production
+
+echo "installation complete"
