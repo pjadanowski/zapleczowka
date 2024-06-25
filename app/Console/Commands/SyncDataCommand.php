@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\Api\ArticleService;
+use App\Services\Api\LinkService;
 use Illuminate\Console\Command;
 
 class SyncDataCommand extends Command
@@ -27,5 +28,8 @@ class SyncDataCommand extends Command
     public function handle()
     {
         (new ArticleService)->sync();
+        (new LinkService)->sync();
+
+        return Command::SUCCESS;
     }
 }
