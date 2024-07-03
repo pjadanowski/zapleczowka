@@ -83,13 +83,19 @@ class UpdateApp extends Command
 
     private function runPull(): bool
     {
-        $command = "ssh-agent bash -c 'ssh-add ~/.ssh/zapleczowka_rsa; git pull'";
+        if (app()->isLocal()) {
+            $this->info('local');
+            info('local');
+            $command = 'set -e && git pull';
+        } else {
+            $command = "set -e && ssh-agent bash -c 'ssh-add ~/.ssh/zapleczowka_rsa; git pull'";
+        }
         // $process = new Process(['git', 'pull']); // symfony version
         $this->info("Running 'git pull'");
         $result = Process::run($command);
 
         if (str_ends_with($result->output(), 'public')) {
-            $result = Process::run('cd .. && '. $command);
+            $result = Process::run('cd .. && ' . $command);
         }
 
         if (str_contains($result->output(), 'Already up to date')) {

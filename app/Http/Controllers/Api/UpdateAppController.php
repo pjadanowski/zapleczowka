@@ -15,7 +15,8 @@ class UpdateAppController extends Controller
     {
         // set version in env
         if ($request->version) {
-            EnvService::updateVariable('APP_VERSION', $request->version, true);
+            // TODO: set in config file // because updating env restarts server
+            // EnvService::updateVariable('APP_VERSION', $request->version, true);
         }
 
         $output = new BufferedOutput;
