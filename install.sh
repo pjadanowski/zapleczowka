@@ -10,12 +10,6 @@ else
     cp .env.example .env
 fi
 
-/opt/alt/php83/usr/bin/php /usr/local/bin/composer install --no-dev
-
-
-#npm install
-#npm run prod
-
 # database
 database_file="database/database.sqlite"
 if [ -f "$database_file" ]
@@ -26,6 +20,14 @@ else
 	echo "create database.sqlite"
     touch $database_file
 fi
+
+composer config platform.php 8.3.8
+
+/opt/alt/php83/usr/bin/php /usr/local/bin/composer install --no-dev
+
+#npm install
+#npm run prod
+
 
 
 /opt/alt/php83/usr/bin/php artisan key:generate
