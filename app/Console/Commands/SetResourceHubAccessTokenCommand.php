@@ -18,7 +18,7 @@ class SetResourceHubAccessTokenCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Sets Bearer token in .env file';
 
     /**
      * Execute the console command.
@@ -29,7 +29,7 @@ class SetResourceHubAccessTokenCommand extends Command
 
         $env = file_get_contents(base_path('.env'));
 
-        $env = preg_replace('/RESOURCE_HUB_ACCESS_TOKEN=(.*)/', 'RESOURCE_HUB_ACCESS_TOKEN=' . $token, $env);
+        $env = preg_replace('/RESOURCE_HUB_ACCESS_TOKEN=(.*)/', 'RESOURCE_HUB_ACCESS_TOKEN=' . "\"$token\"", $env);
 
         file_put_contents(base_path('.env'), $env);
     }

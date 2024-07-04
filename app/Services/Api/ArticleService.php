@@ -71,14 +71,8 @@ class ArticleService extends ParentApiService
             ]);
             throw $e;
         }
-        $baseUrl = parse_url($this->baseUrl());
-        $contents = file_get_contents(($baseUrl['scheme'] ?? '') . '://' . $baseUrl['host'] . (isset($baseUrl['port']) ? (':'. $baseUrl['port']) : '') . $json['thumbnail']);
-        $filename = basename($json['thumbnail']);
 
-        File::ensureDirectoryExists(public_path('thumbnails'));
-
-        $path = public_path("thumbnails/$filename");
-        file_put_contents($path, $contents);
+        $filename = $this->downloadThumbnail($json['thumbnail']);
 
         $category = Category::firstOrCreate(['seo_app_id' => Arr::get($json, 'category.id')], [
             'name'       => $json['category']['name'],
@@ -96,6 +90,27 @@ class ArticleService extends ParentApiService
         ]);
 
         return $article;
+    }
+
+    protected function downloadThumbnail(?string $thumbPath)
+    {
+        if (empty($thumbPath)) {
+            return '';
+        }
+        try {
+            $baseUrl = parse_url($this->baseUrl());
+            $contents = file_get_contents(($baseUrl['scheme'] ?? '') . '://' . $baseUrl['host'] . (isset($baseUrl['port']) ? (':' . $baseUrl['port']) : '') . $thumbPath);
+            $filename = basename($thumbPath);
+
+            File::ensureDirectoryExists(public_path('thumbnails'));
+
+            $path = public_path("thumbnails/$filename");
+            file_put_contents($path, $contents);
+
+            return $filename;
+        } catch (\Exception $e) {
+            return '';
+        }
     }
     /**
      * {

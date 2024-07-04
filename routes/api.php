@@ -17,6 +17,7 @@ Route::group([
 ], function () {
     Route::post('/app/update', [\App\Http\Controllers\Api\UpdateAppController::class, 'pull']);
     Route::post('env/update', [\App\Http\Controllers\Api\EnvController::class, 'update']);
+    Route::post('env/setBearerToken', [\App\Http\Controllers\Api\EnvController::class, 'setBearerToken']);
     Route::post('logo', [\App\Http\Controllers\Api\LogoController::class, 'update']);
 
     Route::post('articles', [\App\Http\Controllers\Api\ArticleController::class, 'store']);
