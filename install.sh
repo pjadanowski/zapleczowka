@@ -29,7 +29,7 @@ composer config platform.php 8.3.8
 #npm run prod
 
 
-
+/opt/alt/php83/usr/bin/php artisan storage:link
 /opt/alt/php83/usr/bin/php artisan key:generate
 /opt/alt/php83/usr/bin/php artisan migrate
 /opt/alt/php83/usr/bin/php artisan optimize

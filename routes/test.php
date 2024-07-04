@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 if (app()->isLocal()) {
     Route::get('/test', function () {
         // (new TemplateService)->updateLogoPath('logo/path2.png');
-        // (new ArticleService)->sync();
-        return (new LinkService())->sync();
+        (new ArticleService)->fetchArticle(38458);
+        // return (new LinkService())->sync();
 return 'ok';
     });
 }

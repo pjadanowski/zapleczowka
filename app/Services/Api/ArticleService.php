@@ -4,6 +4,9 @@ namespace App\Services\Api;
 
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class ArticleService extends ParentApiService
 {
@@ -57,4 +60,61 @@ class ArticleService extends ParentApiService
             return $e->getMessage();
         }
     }
+
+    public function fetchArticle(int $id)
+    {
+        try {
+            $json = $this->http->get('articles/' . $id)->json();
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            Log::debug('fetchArticle error ', [
+                'message' => $e->getMessage(),
+            ]);
+            throw $e;
+        }
+        $baseUrl = parse_url($this->baseUrl());
+        $contents = file_get_contents(($baseUrl['scheme'] ?? '') . '://' . $baseUrl['host'] . (isset($baseUrl['port']) ? ':'. $baseUrl['port'] : '') . $json['thumbnail']);
+        $filename = basename($json['thumbnail']);
+
+        File::ensureDirectoryExists(public_path('thumbnails'));
+
+        $path = public_path("thumbnails/$filename");
+        file_put_contents($path, $contents);
+
+        $category = Category::firstOrCreate(['seo_app_id' => Arr::get($json, 'category.id')], [
+            'name'       => $json['category']['name'],
+            'updated_at' => $json['category']['updated_at'],
+            'created_at' => $json['category']['created_at'],
+        ]);
+
+        $article = Article::create([
+            'title'                   => $json['title'],
+            'thumbnail_image'         => "/thumbnails/$filename",
+            'content'                 => $json['article'],
+            'seo_app_id'              => $json['id'],
+            'category_id'             => $category->id ?? null,
+            'status'                  => $json['status'],
+        ]);
+
+        return $article;
+    }
+    /**
+     * {
+  "id": 38458,
+  "guid": null,
+  "title": "nowy artykuł",
+  "prompt": null,
+  "article": "<p>nowy artykuł</p>",
+  "status": 0,
+  "created_at": "2024-07-03T20:58:01.000000Z",
+  "thumbnail": "/storage/thumbnails/01J1X67N5X0WJW60TZBP1CC2NZ.jpg",
+  "category": {
+    "id": 1755,
+    "name": "nowa kat",
+    "resource_hub_id": 6,
+    "term_id": null,
+    "created_at": "2024-07-03T20:20:26.000000Z",
+    "updated_at": "2024-07-03T20:20:26.000000Z"
+  }
+}
+     */
 }

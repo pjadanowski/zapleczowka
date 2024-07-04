@@ -103,7 +103,7 @@ class Article extends Model
     public function thumbnailImg(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attr) => ! empty($this->thumbnail_image) ?: 'https://fakeimg.pl/640x360',
+            get: fn ($value, $attr) => ! empty($this->thumbnail_image) ? $this->thumbnail_image : 'https://fakeimg.pl/640x360',
         );
     }
 

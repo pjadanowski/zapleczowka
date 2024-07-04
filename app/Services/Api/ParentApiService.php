@@ -20,8 +20,8 @@ abstract class ParentApiService
             ->timeout(600);
     }
 
-    private function baseUrl(): string
+    protected function baseUrl(): string
     {
-        return env('SEO_APP_URL', 'localhost:8007') . '/api/v1/';
+        return env('SEO_APP_URL', 'http://localhost:8007') . '/api/v1/';
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Article;
-use App\Services\Api\CategoryService;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Api\ArticleService;
+use App\Services\Api\CategoryService;
 
 class ArticleController extends Controller
 {
@@ -14,9 +15,9 @@ class ArticleController extends Controller
     ) {
     }
 
-    public function index()
+    public function fetchArticle(Request $request)
     {
-        //
+        (new ArticleService)->fetchArticle($request->id);
     }
 
     public function store(Request $request)

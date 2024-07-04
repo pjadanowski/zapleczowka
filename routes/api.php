@@ -20,5 +20,9 @@ Route::group([
     Route::post('logo', [\App\Http\Controllers\Api\LogoController::class, 'update']);
 
     Route::post('articles', [\App\Http\Controllers\Api\ArticleController::class, 'store']);
+    Route::post('fetch-article', [\App\Http\Controllers\Api\ArticleController::class, 'fetchArticle']);
     Route::patch('articles/{id}', [\App\Http\Controllers\Api\ArticleController::class, 'update']);
+
+    Route::post('categories', [\App\Http\Controllers\Api\CategoryController::class, 'store']);
+
 });
