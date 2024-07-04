@@ -17,6 +17,7 @@ class ArticleController extends Controller
 
     public function fetchArticle(Request $request)
     {
+        info('fetchArticle', ['id' => $request->id]);
         (new ArticleService)->fetchArticle($request->id);
     }
 

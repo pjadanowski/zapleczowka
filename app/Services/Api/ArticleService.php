@@ -72,7 +72,7 @@ class ArticleService extends ParentApiService
             throw $e;
         }
         $baseUrl = parse_url($this->baseUrl());
-        $contents = file_get_contents(($baseUrl['scheme'] ?? '') . '://' . $baseUrl['host'] . (isset($baseUrl['port']) ? ':'. $baseUrl['port'] : '') . $json['thumbnail']);
+        $contents = file_get_contents(($baseUrl['scheme'] ?? '') . '://' . $baseUrl['host'] . (isset($baseUrl['port']) ? (':'. $baseUrl['port']) : '') . $json['thumbnail']);
         $filename = basename($json['thumbnail']);
 
         File::ensureDirectoryExists(public_path('thumbnails'));

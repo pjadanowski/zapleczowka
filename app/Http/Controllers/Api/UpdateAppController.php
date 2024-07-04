@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\EnvService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class UpdateAppController extends Controller
@@ -20,9 +19,10 @@ class UpdateAppController extends Controller
         }
 
         $output = new BufferedOutput;
+        $outputArr= [];
 
-        $res = Artisan::call('app:pull', [], $output);
+        $res = exec('sh gitPull.sh', $outputArr);
 
-        return new JsonResponse(['status' => $res, 'output' => $output->fetch()]);
+        return new JsonResponse(['status' => $res, 'output' => $outputArr]);
     }
 }
