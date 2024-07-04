@@ -21,7 +21,7 @@ class UpdateAppController extends Controller
         $output = new BufferedOutput;
         $outputArr= [];
 
-        $res = exec('sh gitPull.sh', $outputArr);
+        $res = exec('cd .. && sh gitPull.sh', $outputArr);
 
         return new JsonResponse(['status' => $res, 'output' => $outputArr]);
     }
