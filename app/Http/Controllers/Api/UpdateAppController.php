@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Services\EnvService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class UpdateAppController extends Controller
@@ -14,14 +14,14 @@ class UpdateAppController extends Controller
     {
         // set version in env
         if ($request->version) {
-            // TODO: set in config file // because updating env restarts server
-            // EnvService::updateVariable('APP_VERSION', $request->version, true);
+            // set in config file // because updating env restarts server
         }
 
         $output = new BufferedOutput;
-        $outputArr= [];
+        $outputArr = [];
 
         $res = exec('cd .. && sh gitPull.sh', $outputArr);
+        Log::debug('gitPull', $outputArr);
 
         return new JsonResponse(['status' => $res, 'output' => $outputArr]);
     }
