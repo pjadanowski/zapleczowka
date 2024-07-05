@@ -74,11 +74,14 @@ class ArticleService extends ParentApiService
 
         $filename = $this->downloadThumbnail($json['thumbnail']);
 
-        $category = Category::firstOrCreate(['seo_app_id' => Arr::get($json, 'category.id')], [
-            'name'       => $json['category']['name'],
-            'updated_at' => $json['category']['updated_at'],
-            'created_at' => $json['category']['created_at'],
-        ]);
+        $jsonCategoryId = Arr::get($json, 'category.id');
+        if ($jsonCategoryId !== null) {
+            $category = Category::firstOrCreate(['seo_app_id' => $jsonCategoryId], [
+                'name'       => $json['category']['name'],
+                'updated_at' => $json['category']['updated_at'],
+                'created_at' => $json['category']['created_at'],
+            ]);
+        }
 
         $article = Article::create([
             'title'                   => $json['title'],
