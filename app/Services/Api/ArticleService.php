@@ -64,35 +64,13 @@ class ArticleService extends ParentApiService
     public function fetchArticle(int $id)
     {
         try {
-            $json = $this->http->get('articles/' . $id)->json();
+            return $this->http->get('articles/' . $id)->json();
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             Log::debug('fetchArticle error ', [
                 'message' => $e->getMessage(),
             ]);
             throw $e;
         }
-
-        $filename = $this->downloadThumbnail($json['thumbnail']);
-
-        $jsonCategoryId = Arr::get($json, 'category.id');
-        if ($jsonCategoryId !== null) {
-            $category = Category::firstOrCreate(['seo_app_id' => $jsonCategoryId], [
-                'name'       => $json['category']['name'],
-                'updated_at' => $json['category']['updated_at'],
-                'created_at' => $json['category']['created_at'],
-            ]);
-        }
-
-        $article = Article::create([
-            'title'                   => $json['title'],
-            'thumbnail_image'         => "/thumbnails/$filename",
-            'content'                 => $json['article'],
-            'seo_app_id'              => $json['id'],
-            'category_id'             => $category->id ?? null,
-            'status'                  => $json['status'],
-        ]);
-
-        return $article;
     }
 
     protected function downloadThumbnail(?string $thumbPath)
@@ -115,6 +93,33 @@ class ArticleService extends ParentApiService
             return '';
         }
     }
+
+    public function createOrUpdateArticle(array $json): Article
+    {
+        $filename = $this->downloadThumbnail($json['thumbnail']);
+
+        $jsonCategoryId = Arr::get($json, 'category.id');
+        if ($jsonCategoryId !== null) {
+            $category = Category::firstOrCreate(['seo_app_id' => $jsonCategoryId], [
+                'name'       => $json['category']['name'],
+                'updated_at' => $json['category']['updated_at'],
+                'created_at' => $json['category']['created_at'],
+            ]);
+        }
+
+        return Article::updateOrCreate(
+            [
+                'seo_app_id'              => $json['id'],
+            ],
+            [
+                'title'                   => $json['title'],
+                'thumbnail_image'         => "/thumbnails/$filename",
+                'content'                 => $json['article'],
+                'category_id'             => $category->id ?? null,
+                'status'                  => $json['status'],
+            ]);
+    }
+
     /**
      * {
   "id": 38458,

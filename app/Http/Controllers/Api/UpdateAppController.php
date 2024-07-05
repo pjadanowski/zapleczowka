@@ -20,7 +20,7 @@ class UpdateAppController extends Controller
         $output = new BufferedOutput;
         $outputArr = [];
 
-        $res = exec('cd .. && sh gitPull.sh', $outputArr);
+        $res = \exec('cd .. && sh gitPull.sh', $outputArr);
         Log::debug('gitPull', $outputArr);
 
         return new JsonResponse(['status' => $res, 'output' => $outputArr]);
