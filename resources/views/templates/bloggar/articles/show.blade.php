@@ -32,7 +32,7 @@
             <div class="grid grid-cols-12 gap-x-4">
                 <div class="col-span-8 md:col-span-12">
                     <div class="mb-[70px]">
-                        <img class="w-full" src="assets/images/blog/img-10.jpg" alt="">
+                        <img class="w-full" src="{{ $article->thumbnailImg }}" alt="{{ $article->title }}">
                         <div class="overflow-hidden my-[35px]">
                             <ul>
                                 <li class="text-[14px] font-medium uppercase flex items-center col:float-none text-[#687693] relative">
