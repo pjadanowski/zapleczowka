@@ -30,8 +30,9 @@ class TemplateService
     public function templateMapping(string $name)
     {
         return match ($name) {
-            'bloggar' => 'bloggar',
-            default   => 'bloggar',
+            'bloggar'   => 'bloggar',
+            'newspaper' => 'newspaper',
+            default     => $name,
         };
     }
 }

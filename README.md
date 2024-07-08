@@ -7,6 +7,8 @@ należy utworzyć nowy folder z nazwą templatu i wrzucić do niego pliki
 - layout.blade.php <- główny layout ze stylami
 - index.blade.php
 - articles/show.blade.php
+- categoryArticles/show.blade.php
+- contact.blade.php
 
 następnie w `TemplateService` dodać template do mappingu.
 Style i skrypty wrzucić do public/templates/{nazwaTemplatu}css/

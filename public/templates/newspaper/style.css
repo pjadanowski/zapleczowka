@@ -1,0 +1,75 @@
+:root {
+    --secondary: #5c1182;
+}
+
+body {
+    background-color: white;
+}
+
+.logo {
+    font-size: 35px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media screen and (min-width: 768px) {
+    .logo {
+        font-size: 45px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .logo {
+        font-size: 60px;
+    }
+}
+
+.menu {
+    margin-top: 30px;
+    padding: 20px 30px;
+    border-top: 1px solid #e1e0e0;
+    border-bottom: 1px solid #e1e0e0;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 3;
+}
+
+.menu a {
+    color: #222222;
+    font-weight: 700;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    margin-left: 30px;
+    font-size: 85%;
+}
+.menu a:hover {
+      color: var(--secondary);
+}
+
+.gelasio {
+    font-family: "Gelasio", serif;
+}
+
+.logo, h1, h2, h3, h4, h5, h6 {
+    font-family: "Gelasio", serif;
+}
+
+.categoryBadge {
+    display: inline-flex;
+    background-color: var(--secondary);
+    padding: 3px 6px;
+    margin: 0;
+    text-transform: uppercase;
+    color: white;
+    font-size: 70%;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.hero {
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+}
+.hero-img {
+    max-width: 500px;
+    max-height: 500px;
+}

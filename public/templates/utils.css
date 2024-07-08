@@ -1,0 +1,15 @@
+.flex {
+    display: flex;
+}
+
+.no-bullets {
+    list-style: none;
+}
+
+.space-x-3 > * + *{
+    margin-left: 0.75rem; /* 12px */
+}
+
+.text-sm {
+    font-size: 80%;
+}
