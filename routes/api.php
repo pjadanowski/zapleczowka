@@ -25,5 +25,5 @@ Route::group([
     Route::patch('articles/{id}', [\App\Http\Controllers\Api\ArticleController::class, 'update']);
 
     Route::post('categories', [\App\Http\Controllers\Api\CategoryController::class, 'store']);
-
+    Route::put('categories/{id}', [\App\Http\Controllers\Api\CategoryController::class, 'update']);
 });
