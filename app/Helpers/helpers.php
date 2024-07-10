@@ -4,8 +4,6 @@ use App\Services\TemplateService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
-
-
 function getTemplateName(): string
 {
     return (new TemplateService)->getTemplateName();
@@ -13,7 +11,7 @@ function getTemplateName(): string
 
 function templateViewPath(string $view): string
 {
-    return 'templates.'. getTemplateName(). '.'. $view;
+    return 'templates.' . getTemplateName() . '.' . $view;
 }
 
 function templateView(string $view, array $data = [])
@@ -21,7 +19,7 @@ function templateView(string $view, array $data = [])
     return view(templateViewPath($view), $data);
 }
 
-function isRoute(string $routeName): bool 
+function isRoute(string $routeName): bool
 {
     return Route::currentRouteName() === $routeName;
 }
@@ -29,15 +27,15 @@ function isRoute(string $routeName): bool
 function polishMonths(): array
 {
     return [
-        1 => 'Stycznia',
-        2 => 'Lutego',
-        3 => 'Marca',
-        4 => 'Kwietnia',
-        5 => 'Maja',
-        6 => 'Czerwca',
-        7 => 'Lipca',
-        8 => 'Sierpnia',
-        9 => 'Września',
+        1  => 'Stycznia',
+        2  => 'Lutego',
+        3  => 'Marca',
+        4  => 'Kwietnia',
+        5  => 'Maja',
+        6  => 'Czerwca',
+        7  => 'Lipca',
+        8  => 'Sierpnia',
+        9  => 'Września',
         10 => 'Października',
         11 => 'Listopada',
         12 => 'Grudnia',
@@ -65,6 +63,7 @@ function polishDateFormat(Carbon $date, bool $dayName = false): string
         $str .= polishDays()[$date->dayOfWeek()] . ', ';
     }
 
-    $str.= $date->format('d').' '. polishMonths()[$date->month].' '.$date->format('Y');
+    $str .= $date->format('d') . ' ' . polishMonths()[$date->month] . ' ' . $date->format('Y');
+
     return strtolower($str);
 }

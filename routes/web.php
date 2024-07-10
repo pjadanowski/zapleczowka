@@ -5,7 +5,7 @@ use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
-require __DIR__.'/test.php';
+require __DIR__ . '/test.php';
 
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/kontakt', [PageController::class, 'contact'])->name('contact');

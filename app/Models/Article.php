@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\HasSlug;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -49,15 +48,14 @@ class Article extends Model
 
         foreach ($links as $link) {
             if (! $this->hasLinkInserted($link->anchor)) {
-                $url =  !empty($link->url) ? $link->url : $link->name;
+                $url = ! empty($link->url) ? $link->url : $link->name;
                 $insert = "<a href=\"{$url}\">$link->anchor</a>";
                 $re = '/(\r?\n)+/m';
                 $subst = "$1 $insert $1";
                 $result = preg_replace($re, $subst, $result, 1, $numberOfReplacements); // todo: replace with <a href="link->anchor">link->name</a>";
-     
+
                 // if not found and not replaced
                 if ($numberOfReplacements === 0) {
-      
                     $result = $this->insertAfterSpace($result, $insert);
                 }
             }
@@ -89,7 +87,7 @@ class Article extends Model
             // link    color: #4981ef;
             // If a space is found, insert the content after the space
             if ($position !== false) {
-                $modifiedString = substr_replace($originalString, '. '. $insertion, $position, 0);
+                $modifiedString = substr_replace($originalString, '. ' . $insertion, $position, 0);
 
                 return $modifiedString;
             }

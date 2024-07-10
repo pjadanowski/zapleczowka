@@ -1,13 +1,13 @@
 @props(['article'])
 
-<div class=" flex flex-col">
+<div class="flex flex-col">
     <div class="relative flex flex-col">
         <!-- <img src="{{ $article->thumbnailImg }}" alt="{{ $article->title }}"> -->
         <!-- <img src="https://via.placeholder.com/500" class="img-fluid " alt="{{ $article->title }}"> -->
-          <div
+        <div
             style="background-image: url(https://via.placeholder.com/600)"
-            class="bg-cover bg-center flex flex-1"
-          ></div>
+            class="flex flex-1 bg-cover bg-center"
+        ></div>
 
         <div class="categoryBadge absolute bottom-0 left-0">{{ $article->category?->name }}</div>
     </div>

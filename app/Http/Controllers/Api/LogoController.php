@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Services\LogoService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use App\Services\LogoService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class LogoController extends Controller
 {

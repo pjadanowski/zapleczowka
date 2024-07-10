@@ -18,7 +18,7 @@ class EnvController extends Controller
         file_put_contents(base_path('.env'), $env);
     }
 
-    function setBearerToken(Request $request)
+    public function setBearerToken(Request $request)
     {
         $token = $request->token;
         Artisan::call('app:env-set-resourceHubAccessToken', [

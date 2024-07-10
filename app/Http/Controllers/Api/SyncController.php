@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use App\Services\Api\LinkService;
 use App\Http\Controllers\Controller;
 use App\Services\Api\ArticleService;
+use App\Services\Api\LinkService;
+use Illuminate\Http\Request;
 
 class SyncController extends Controller
 {
@@ -16,7 +16,7 @@ class SyncController extends Controller
     public function update(Request $request)
     {
         // sync articles
-        (new ArticleService())->sync();
-        (new LinkService())->sync();
+        (new ArticleService)->sync();
+        (new LinkService)->sync();
     }
 }
