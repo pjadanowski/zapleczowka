@@ -113,7 +113,7 @@ class ArticleService extends ParentApiService
             ],
             [
                 'title'                   => $json['title'],
-                'thumbnail_image'         => "/thumbnails/$filename",
+                'thumbnail_image'         => $filename ? "/thumbnails/$filename" : null,
                 'content'                 => $json['article'],
                 'category_id'             => $category->id ?? null,
                 'status'                  => $json['status'],

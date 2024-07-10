@@ -2,7 +2,7 @@
 
 return [
     'version'     => '1',
-    'name'        => 'newspaper',
+    'name'        => 'bloggar',
     'logo_path'   => '/images/logo.webp',
     'description' => '',
 ];

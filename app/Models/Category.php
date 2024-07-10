@@ -13,8 +13,6 @@ class Category extends Model
 {
     use HasFactory;
 
-    // protected $table = 'resource_hub_categories';
-
     protected $guarded = [];
 
     public function slug(): Attribute

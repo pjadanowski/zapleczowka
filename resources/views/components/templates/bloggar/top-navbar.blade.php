@@ -1,5 +1,5 @@
     @php
-        $categories = \App\Models\Category::withCount('articles')->latest()->get();
+        $categories = \App\Models\Category::withCount('articles')->where('top_navbar_visible', true)->latest()->get();
     @endphp
 <header>
             {{-- topbar news placeholder--}}
@@ -13,12 +13,9 @@
                                 <a href="/">Strona główna</a>
                             </li>
                             <li>
-                                <a href="#">FAQ</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="{{ route('contact') }}">Kontakt</a></li>
-                                </ul>
+                                <a href="{{ route('contact') }}">Kontakt</a>
                             </li>
-                            <!-- cats -->
+                           
                             @foreach ($categories as $c)
                                 <li><a href="{{ route('category.articles', $c->slug) }}">{{ $c->name }}</a></li>
                             @endforeach
@@ -31,20 +28,10 @@
                         </a>
                     </div>
 
+                    {{-- desktop menu --}}
                     <ul class="sm:hidden md:block">
-                        <li class="relative inline-block group">
-                            <a href="/" class="relative text-[20px] lg:text-[17px] py-[35px]
-                                 xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
-                                    text-[#3756f7] block capitalize
-                                    font-heading-font font-medium transition-all
-                                    hover:text-[#3756f7]
-                                   {{ isRoute('index') ? ' before:absolute before:left-0 before:top-0 before:w-full
-                                    before:h-[4px] before:bg-[#3756f7] before:content
-                                before:opacity-1 before:visible before:transition-all
-                                    before:rounded-[3px]' : '' }}
-                                    ">Home</a>
-                        </li>
-                        <li class="relative inline-block group">
+                        
+                        {{-- <li class="relative inline-block group">
                             <a href="#" class="relative text-[20px] lg:text-[17px] py-[35px]
                                  xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
                                     text-[#232f4b] block capitalize
@@ -66,13 +53,25 @@
                                 </li>
                             </ul>
                         </li>
-                        @foreach ($categories->take(4) as $c)
+                        --}}
                         <li class="relative inline-block">
-                            <a href="{{ route('category.articles', $c->slug) }}" class="relative text-[20px] lg:text-[17px] py-[35px]
+                            <a href="{{ route('contact') }}" class="relative text-[20px] lg:text-[17px] py-[35px]
                                  xl:py-[30px] px-[20px] xl:px-[15px] lg:px-[10px]
                                     text-[#232f4b] block capitalize
                                     font-heading-font font-medium transition-all
                                    hover:text-[#3756f7]
+                                   before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
+                                   before:bg-[#3756f7] before:content
+                                   before:opacity-0 before:invisible before:transition-all before:rounded-[3px]
+                                   hover:before:opacity-100 hover:before:visible
+                                ">Kontakt</a>
+                        </li>
+                        @foreach ($categories->take(10) as $c)
+                        <li class="relative inline-block">
+                            <a href="{{ route('category.articles', $c->slug) }}" class="relative text-[20px] lg:text-[17px] py-[10px]
+                                 xl:py-[20px] px-[20px] xl:px-[15px] lg:px-[10px]
+                                    text-[#232f4b] block font-heading-font font-medium transition-all
+                                   hover:text-[#3756f7] 
                                    before:absolute before:left-0 before:top-0 before:w-full before:h-[4px]
                                    before:bg-[#3756f7] before:content
                                    before:opacity-0 before:invisible before:transition-all before:rounded-[3px]

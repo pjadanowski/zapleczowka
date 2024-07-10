@@ -27,14 +27,16 @@ class CategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => ['required', Rule::unique('categories', 'name')->ignore($id)],
+            'name'               => ['required', Rule::unique('categories', 'name')->ignore($id, 'seo_app_id')],
+            'top_navbar_visible' => ['sometimes'],
         ]);
 
         $category = Category::updateOrCreate([
-            'seo_app_id' => $request->id,
+            'seo_app_id' => $id,
         ],
             [
-                'name'       => $request->name,
+                'name'               => $request->name,
+                'top_navbar_visible' => $request->top_navbar_visible,
             ]);
 
         return response()->json(['category' => $category], 200);

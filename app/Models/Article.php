@@ -15,7 +15,6 @@ class Article extends Model
     use HasFactory;
     use HasSlug;
 
-    // protected $table = 'resource_hub_articles';
     protected $guarded = [];
 
     protected static function booted()

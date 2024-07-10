@@ -26,4 +26,5 @@ Route::group([
 
     Route::post('categories', [\App\Http\Controllers\Api\CategoryController::class, 'store']);
     Route::put('categories/{id}', [\App\Http\Controllers\Api\CategoryController::class, 'update']);
+    Route::delete('categories/{id}', [\App\Http\Controllers\Api\CategoryController::class, 'destroy']);
 });

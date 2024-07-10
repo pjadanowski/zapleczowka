@@ -5899,9 +5899,14 @@ h6 {
     line-height: 2.25rem;
 }
 
+.text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+}
+
 .text-6xl {
     font-size: 3.75rem;
-    line-height: 1;
+    line-height: 2.5rem;
 }
 
 .text-\[0\.8rem\] {
@@ -11642,7 +11647,8 @@ h6 {
     }
 
     .sm\:text-\[40px\] {
-        font-size: 40px;
+        font-size: 40px !important;
+        line-height: 3rem;
     }
 
     .sm\:text-base {

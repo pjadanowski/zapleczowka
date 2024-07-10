@@ -1,5 +1,7 @@
 @extends('templates.bloggar.layout')
 
+@section('title', $category->name)
+
 
 @section('content')
 <div class="bg-no-repeat bg-center bg-cover min-h-[400px] relative flex justify-center flex-col z-10
@@ -9,9 +11,9 @@
                 <div class="grid grid-cols-12">
                     <div class="col-span-12">
                         <div class="text-center">
-                            <h2 class="text-6xl text-white mt-[-10px] mb-[20px] sm:text-3xl sm:mb-[10px]">
+                            <h1 class="text-5xl text-white mt-[-10px] mb-[20px] sm:text-3xl sm:mb-[10px]">
                                 {!! $category->name !!}
-                            </h2>
+                            </h1>
                             <ul class="">
                                 <li class="inline-block px-[5px] text-white relative text-xl font-heading-font sm:text-lg after:content-['/'] after:left-[7px]">
                                     <a href="/">Home</a>
@@ -46,10 +48,10 @@
                                             Comments {{  rand(15, 120) }} </li>
                                     </ul>
                                 </div>
-                                <h3 class="text-[34px] md:text-[25px] sm:text-[22px] text-white font-bold font-base-font leading-[40px] transition-all mb-[20px] group">
+                                <h2 class="text-[34px] md:text-[25px] sm:text-[22px] text-white font-bold font-base-font leading-[40px] transition-all mb-[20px] group">
                                     <a href="{{ $article->show() }}" class="group-hover:text-[#3756f7;] transition-all text-[#232f4b]
                                         font-heading-font">{{ $article->title }}</a>
-                                </h3>
+                                </h2>
                                 <p class="text-[#666] leading-[24px] text-[16px] mb-[20px]">
                                     {{ $article->excerpt }}
                                 </p>

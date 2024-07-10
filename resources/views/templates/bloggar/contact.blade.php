@@ -10,8 +10,7 @@
                 <div class="grid grid-cols-12">
                     <div class="col-span-12">
                         <div class="text-center">
-                            <h2 class="text-6xl text-white mt-[-10px] mb-[20px] sm:text-3xl sm:mb-[10px]">Formularz kontaktowy
-                            </h2>
+                            <h1 class="text-4xl text-white mt-[-10px] mb-[20px] sm:text-3xl sm:mb-[10px]">Formularz kontaktowy</h1>
                             <ul class="">
                                 <li
                                     class="inline-block px-[5px] text-white relative text-xl font-heading-font sm:text-lg after:content-['/'] after:left-[7px]">
@@ -34,7 +33,6 @@
                 <div class="grid grid-cols-12">
                     <div class="col-span-1"></div>
                     <div class="col-span-10 md:col-span-12">
-                   
                         <div class="max-w-[440px] mx-auto text-center mb-[50px]">
                             <h2 class="text-[35px] col:text-[25px] text-[#0a272c] font-heading-font font-bold
                         mb-[20px]">
@@ -50,19 +48,19 @@
                                     <input type="text" class="form-control w-full bg-transparent border-[1px] border-[#ebebeb] h-[50px]
                                 text-[#212529] transition-all pl-[25px] focus:outline-0 focus:shadow-none
                                     focus:border-[#3756f7] focus:bg-transparent " name="name" id="name"
-                                        placeholder="Your Name*">
+                                        placeholder="Imię i nazwisko*">
                                 </div>
                                 <div
                                     class="w-[calc(50%-30px)] float-left mx-[15px] mb-[25px] col:float-none col:w-[calc(100%-25px)]">
                                     <input type="email"
                                         class="form-control  w-full bg-transparent border-[1px] border-[#ebebeb] h-[50px] text-[#212529] transition-all pl-[25px] focus:outline-0 focus:shadow-none  focus:border-[#3756f7] focus:bg-transparent"
-                                        name="email" id="email" placeholder="Your Email*">
+                                        name="email" id="email" placeholder="Email*">
                                 </div>
                                
                                 <div class="w-[calc-(100%-25px)] mb-[25px] mx-[15px]">
                                     <textarea
                                         class="form-control  w-full bg-transparent border-[1px] border-[#ebebeb] h-[180px]  text-[#212529] transition-all pt-[15px] pl-[25px] focus:outline-0 focus:shadow-none  focus:border-[#3756f7] focus:bg-transparent"
-                                        name="note" id="note" placeholder="Message..."></textarea>
+                                        name="note" id="note" placeholder="Wiadomość..."></textarea>
                                 </div>
                                 <div class="text-center w-full mb-[10px]">
                                     <button type="submit" class="bg-[#3756f7] text-[#fff] inline-block py-[12px] px-[22px] border

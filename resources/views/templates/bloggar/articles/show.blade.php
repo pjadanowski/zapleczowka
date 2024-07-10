@@ -1,5 +1,8 @@
 @extends('templates.bloggar.layout')
 
+@section('title', $article->title)
+
+@section('description', $article->content)
 
 @section('content')
     <div class="bg-[url(../images/page-title.jpg)] bg-no-repeat bg-center bg-cover min-h-[400px] relative flex justify-center flex-col z-10
@@ -9,9 +12,9 @@
                 <div class="grid grid-cols-12">
                     <div class="col-span-12">
                         <div class="text-center">
-                            <h2 class="text-6xl text-white mt-[-10px] mb-[20px] sm:text-3xl sm:mb-[10px]">
+                            <h1 class="text-3xl text-white mt-[-10px] mb-[20px] sm:text-[40px] sm:mb-[10px]">
                                 {{ $article->title }}
-                            </h2>
+                            </h1>
                             <ul class="">
                                 <li class="inline-block px-[5px] text-white relative text-xl font-heading-font sm:text-lg after:content-['/'] after:left-[7px]">
                                     <a href="/">Home</a>
@@ -43,9 +46,9 @@
                                 </li>
                             </ul>
                         </div>
-                        <h3 class="text-[34px] md:text-[25px] sm:text-[22px] text-[#0a272c]  leading-[40px] mb-[20px]">
+                        <h1 class="text-[34px] md:text-[25px] sm:text-[22px] text-[#0a272c]  leading-[40px] mb-[20px]">
                             {{ $article->title }}
-                        </h3>
+                        </h1>
               
                         <div class="prose xl:prose-lg !max-w-full">
                             {!! $article->contentWithLink !!}
@@ -105,33 +108,34 @@
                     </div>
                     <!-- end author-box -->
                     <div class="overflow-hidden border border-[#d8e0f1] px-[25px]">
+                        @if ($randomArticles->first())
                         <div class="py-[40px] pr-[15px] pl-[5px] sm:py-[25px] sm:px-[15px] w-[50%] float-left sm:w-full sm:float-none text-left group">
-                            <a href="/" class="inline-block">
+                            <a href="{{ $randomArticles->first()->show() }}" class="inline-block">
                                 <span class="tracking-[2px] text-[15px] relative transition-all group-hover:text-[#3756f7] text-[#6e6e6e] uppercase font-semibold flex
                                    group-hover:before:text-[#3756f7] ">
                                    <x-heroicon-o-arrow-left class="mr-4 size-5 text-[#687693]"/>
                                    <span>Poprzedni artykuł</span>
                                 </span>
-                                <span class="font-base-font text-[18px] font-normal text-[#232f4b] mt-[15px]
-                                        block">At
-                                    vero eos et accusamus et iusto odio dignissimos
-                                    ducimus qui blanditiis praesentium.</span>
+                                <span class="font-base-font text-[18px] font-normal text-[#232f4b] mt-[15px] block">
+                                    {!! $randomArticles->first()->title !!}
+                                </span>
                             </a>
                         </div>
+                        @endif
+                        @if ($randomArticles->get(1))
                         <div class="py-[40px] pl-[15px] pr-[5px] sm:py-[25px] sm:px-[15px] w-[50%] float-left sm:w-full sm:float-none text-right sm:text-left  group border-l border-[#d8e0f1] sm:border-l-transparent sm:border-t">
-
-                            <a href="/" class="inline-block transition-all group">
+                            <a href="{{ $randomArticles->get(1)->show() }}" class="inline-block transition-all group">
                                 <span class="flex justify-end sm:pr-0 tracking-[2px] text-[15px] relative transition-all group-hover:text-[#3756f7] text-[#6e6e6e] uppercase   font-semibold 
                                    before:hidden group-hover:before:text-[#3756f7] items-center">
                                    <span class="mr-4">Następny artykuł</span>
                                     <x-heroicon-o-arrow-right class="size-5 text-[#687693]"/>
                                 </span>
-                                <span class="font-base-font text-[18px] font-normal text-[#232f4b] mt-[15px]
-                                        block">Dignissimos
-                                    ducimus qui blanditiis praesentiu deleniti
-                                    atque corrupti quos dolores</span>
+                                <span class="font-base-font text-[18px] font-normal text-[#232f4b] mt-[15px] block">
+                                    {!! $randomArticles->get(1)->title !!}
+                                </span>
                             </a>
                         </div>
+                        @endif
                     </div>
                     <div class="mt-[70px]">
                         <h3 class="text-[30px] md:text-[25px] sm:text-[20px] uppercase tracking-[3px]
@@ -140,13 +144,13 @@
                         </h3>
                         <ol class="pl-0">
                             <li class="comment even thread-even depth-1" id="comment-1">
-                                <div id="div-comment-1" class="relative border-b border-[#ebebeb] p-[30px] md:px-[25px] md:py-[35px]">
-                                    <div class="absolute left-[35px] sm:static">
+                                <div id="div-comment-1" class="relative flex border-b border-[#ebebeb] p-[30px] md:px-[25px] md:py-[35px]">
+                                    <div class=" left-[35px] sm:static">
                                         <div class="comment-image">
-                                            <img class="rounded-full" src="assets/images/blog-details/comments-author/img-1.jpg" alt="">
+                                            <img class="rounded-full max-w-full h-auto max-h-[180px]" src="{{ asset('img/default-person.png') }}" alt="">
                                         </div>
                                     </div>
-                                    <div class="pl-[100px] sm:pl-0 sm:pt-[25px]">
+                                    <div class="pl-[20px] sm:pl-0 sm:pt-[25px]">
                                         <div class="comment-wrapper">
                                             <h4 class="text-[18px] capitalize text-[#232f4b] font-bold
                                                     font-heading-font mb-[15px]">
@@ -162,13 +166,13 @@
                                 </div>
                                 <ul class="pl-[30px]">
                                     <li class="comment">
-                                        <div class="relative border-b border-[#ebebeb] p-[30px] md:px-[25px] md:py-[35px]">
-                                            <div class="absolute left-[35px] sm:static">
+                                        <div class="relative flex border-b border-[#ebebeb] p-[30px] md:px-[25px] md:py-[35px]">
+                                            <div class="sm:static">
                                                 <div class="comment-image">
-                                                    <img class="rounded-full" src="assets/images/blog-details/comments-author/img-2.jpg" alt="">
+                                                    <img class="rounded-full max-w-full h-auto max-h-[180px]" src="{{ asset('img/default-person.png') }}" alt="">
                                                 </div>
                                             </div>
-                                            <div class="pl-[100px] sm:pl-0 sm:pt-[25px]">
+                                            <div class="pl-[20px] sm:pl-0 sm:pt-[25px]">
                                                 <div class="comment-wrapper">
                                                     <h4 class="text-[18px] capitalize text-[#232f4b] font-bold
                                                             font-heading-font mb-[15px]">
@@ -184,13 +188,13 @@
                                         </div>
                                         <ul class="pl-[30px]">
                                             <li class="comment">
-                                                <div class="relative border-b border-[#ebebeb] p-[30px] md:px-[25px] md:py-[35px]">
-                                                    <div class="absolute left-[35px] sm:static">
+                                                <div class="relative flex border-b border-[#ebebeb] p-[30px] md:px-[25px] md:py-[35px]">
+                                                    <div class="sm:static">
                                                         <div class="comment-image">
-                                                            <img class="rounded-full" src="assets/images/blog-details/comments-author/img-3.jpg" alt="">
+                                                            <img class="rounded-full max-w-full h-auto max-h-[180px]" src="{{ asset('img/default-person.png') }}" alt="">
                                                         </div>
                                                     </div>
-                                                    <div class="pl-[100px] sm:pl-0 sm:pt-[25px]">
+                                                    <div class="pl-[20px] sm:pl-0 sm:pt-[25px]">
                                                         <div class="comment-wrapper">
                                                             <h4 class="text-[18px] capitalize text-[#232f4b] font-bold font-heading-font mb-[15px]">
                                                                 Robert Sonny<span class="text-[15px]  capitalize  text-[#687693] font-normal  pl-[5px] sm:pl-0">says
@@ -211,29 +215,6 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
-
-                            <li class="comment">
-                                <div class="relative p-[30px] md:px-[25px] md:py-[35px]">
-                                    <div class="absolute left-[35px] sm:static">
-                                        <div class="comment-image">
-                                            <img class="rounded-full" src="assets/images/blog-details/comments-author/img-1.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="pl-[100px] sm:pl-0 sm:pt-[25px]">
-                                        <div class="comment-wrapper">
-                                            <h4 class="text-[18px] capitalize text-[#232f4b] font-bold
-                                                    font-heading-font mb-[15px]">
-                                                Robert Sonny <span class="text-[15px]  capitalize  text-[#687693] font-normal  pl-[5px] sm:pl-0">says
-                                                    Jul 21, 2024 at 10:00am</span></h4>
-                                            <p class="text-[15px]  capitalize  text-[#687693] font-normal mb-[20px]">
-                                                I must explain to you how all this mistaken idea of
-                                                denouncing pleasure and praising pain was born and I
-                                                will give you a complete account of the system</p>
-                                            <a class="text-[14px]  font-base-font text-[#232f4b] font-semibold inline-block underline uppercase tracking-[1px] transition-all hover:text-[#3756f7]" href="#"><span>Reply</span></a>
-                                        </div>
-                                    </div>
-                                </div>
                             </li>
                         </ol>
                         <!-- end comments-section -->

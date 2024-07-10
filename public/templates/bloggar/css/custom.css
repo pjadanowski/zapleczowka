@@ -50,3 +50,7 @@ body {
         grid-column: span 6 / span 6 !important;
     }
 }
+
+.max-h-\[180px\] {
+    max-height: 180px;
+}
