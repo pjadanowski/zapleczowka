@@ -2,7 +2,8 @@
 
 @section('title', $article->title)
 
-@section('description', $article->content)
+@section('meta_description', $article->meta_description)
+@section('meta_keywords', $article->meta_keywords)
 
 @section('content')
     <div class="relative z-10 flex min-h-[400px] flex-col justify-center bg-[url(../images/page-title.jpg)] bg-cover bg-center bg-no-repeat before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-[#232f4b] before:opacity-70 sm:min-h-[250px] md:mt-3">

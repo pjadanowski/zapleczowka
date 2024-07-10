@@ -1,5 +1,7 @@
 #! /bin/bash
 
+git reset --hard
+
 ssh-agent bash -c 'ssh-add ~/.ssh/zapleczowka_rsa; git pull'
 
 /opt/alt/php83/usr/bin/php /usr/local/bin/composer install --no-dev

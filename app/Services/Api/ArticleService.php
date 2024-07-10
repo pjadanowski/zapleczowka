@@ -117,6 +117,8 @@ class ArticleService extends ParentApiService
                 'content'                 => $json['article'],
                 'category_id'             => $category->id ?? null,
                 'status'                  => $json['status'],
+                'meta_description'        => strip_tags($json['meta_description']),
+                'meta_keywords'           => strip_tags($json['meta_keywords']),
             ]);
     }
 

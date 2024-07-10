@@ -22,7 +22,7 @@ Route::group([
 
     Route::post('articles', [\App\Http\Controllers\Api\ArticleController::class, 'store']);
     Route::post('fetch-article', [\App\Http\Controllers\Api\ArticleController::class, 'fetchArticle']);
-    Route::patch('articles/{id}', [\App\Http\Controllers\Api\ArticleController::class, 'update']);
+    Route::put('articles/{id}', [\App\Http\Controllers\Api\ArticleController::class, 'update']);
 
     Route::post('categories', [\App\Http\Controllers\Api\CategoryController::class, 'store']);
     Route::put('categories/{id}', [\App\Http\Controllers\Api\CategoryController::class, 'update']);

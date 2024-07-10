@@ -12,11 +12,11 @@
     />
     <meta
         name="description"
-        content="@yield('description')"
+        content="@yield('meta_description')"
     />
     <meta
         name="keywords"
-        content="@yield('keywords')"
+        content="@yield('meta_keywords')"
     />
 
     <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
