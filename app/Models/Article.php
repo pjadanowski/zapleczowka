@@ -21,10 +21,6 @@ class Article extends Model
         static::creating(function (Article $article) {
             $article->slug = $article->findSlug('title');
         });
-
-        static::saving(function (Article $article) {
-            $article->slug = $article->findSlug('title');
-        });
     }
 
     // public function slug(): Attribute
