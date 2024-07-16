@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withSchedule(function (Schedule $schedule) {
-        $schedule->call(new GenerateSitemap)->dailyAt('0:30');
+        $schedule->command(GenerateSitemap::class)->dailyAt('0:30');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
