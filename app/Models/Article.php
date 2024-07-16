@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class Article extends Model
+class Article extends Model implements Sitemapable
 {
     use HasFactory;
     use HasSlug;
@@ -103,6 +105,11 @@ class Article extends Model
     public function show()
     {
         return route('articles.show', $this->slug);
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        return $this->show();
     }
 
     public function category(): BelongsTo

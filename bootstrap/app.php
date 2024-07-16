@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Foundation\Application;
+use App\Console\Commands\GenerateSitemap;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -13,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+    })
+    ->withSchedule(function (Schedule $schedule) {
+        $schedule->calls(new GenerateSitemap())->dailyAt('0:30');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

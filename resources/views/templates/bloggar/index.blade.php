@@ -1,5 +1,7 @@
 @extends('templates.bloggar.layout')
 
+@section('title', 'Strona główna')
+
 @section('content')
     <!-- start of wpo-blog-hero -->
     @include('components.templates.bloggar.hero-section-grid')

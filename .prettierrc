@@ -8,7 +8,6 @@
     "overrides": [
         {
             "files": "*.blade.php",
-            "vscodeLanguageIds": ["blade"],
             "options": {
                 "parser": "blade"
             }

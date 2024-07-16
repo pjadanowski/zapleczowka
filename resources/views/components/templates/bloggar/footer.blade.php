@@ -49,6 +49,14 @@
                                     FAQ
                                 </a>
                             </li>
+                            <li class="group relative z-[1] py-[6px] pl-[15px] before:absolute before:left-0 before:top-[50%] before:-z-[1] before:h-[2px] before:w-[5px] before:-translate-y-1/2 before:bg-[#cbcbcb] before:transition-all before:duration-300 hover:before:bg-[#3756f7]">
+                                <a
+                                    href="/sitemap.xml"
+                                    class="text-[16px] text-white transition-all duration-300 group-hover:text-[#3756f7]"
+                                >
+                                    Sitemap
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
