@@ -7,13 +7,7 @@
     @include('components.templates.bloggar.hero-section-grid')
     <!-- end of wpo-blog-hero -->
 
-    <!-- start of wpo-breacking-news -->
-    {{--
-        @include('breaking-news-carousel')
-    --}}
-    <!-- end of wpo-breacking-news -->
-
-    <!-- start wpo-blog-highlights-section -->
+   
     <section>
         <div class="wraper">
             <div class="col:mb-6 mb-8 mt-8">
