@@ -3515,6 +3515,9 @@
         width: 100%;
     }
 
+    .sm\:max-w-md {
+        max-width: 48rem/* 768px */;
+    }
 }
 
 @media (min-width: 768px) {
@@ -3572,4 +3575,8 @@
             opacity: .5;
         }
     }
+}
+
+.min-h-screen {
+    min-height: 100vh;
 }

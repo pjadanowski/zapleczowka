@@ -11,3 +11,6 @@ Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/kontakt', [PageController::class, 'contact'])->name('contact');
 Route::get('/category/{categorySlug}', [CategoryArticleController::class, 'show'])->name('category.articles');
 Route::get('/{slug}', [ArticleController::class, 'show'])->name('articles.show');
+
+
+require __DIR__.'/auth.php';
