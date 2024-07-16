@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\Console\Output\BufferedOutput;
+use Illuminate\Support\Facades\Process;
 
 class UpdateAppController extends Controller
 {
@@ -20,9 +21,11 @@ class UpdateAppController extends Controller
         $output = new BufferedOutput;
         $outputArr = [];
 
-        $res = \exec('cd .. && sh gitPull.sh', $outputArr);
+        $result = Process::run('ls -la');
+        // $result = \exec('cd .. && sh gitPull.sh', $outputArr);
         Log::debug('gitPull', $outputArr);
 
-        return new JsonResponse(['status' => $res, 'output' => $outputArr]);
+        // return new JsonResponse(['status' => $result, 'output' => $outputArr]);
+        return new JsonResponse(['status' => $result->successful(), 'output' => $result->output()]);
     }
 }
