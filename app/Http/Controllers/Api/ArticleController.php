@@ -60,6 +60,7 @@ class ArticleController extends Controller
 
     public function destroy(string $id)
     {
+        info('deleting article', ['seo_app_id' => $id]);
         $deleted = Article::where('seo_app_id', $id)->delete();
 
         return response()->json(['deleted' => $deleted !== null]);

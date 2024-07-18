@@ -11,9 +11,9 @@
     <section>
         <div class="wraper">
             <div class="col:mb-6 mb-8 mt-8">
-                <h2 class="col:text-2xl relative pb-5 text-3xl font-bold capitalize text-[#444444] before:absolute before:bottom-0 before:left-0 before:h-[5px] before:w-[100px] before:rounded-[6px] before:bg-[#3756f7] after:absolute after:bottom-0 after:left-[110px] after:h-[5px] after:w-7 after:rounded-[6px] after:bg-[#3756f7]">
-                    Czytaj więcej
-                </h2>
+                <p class="col:text-2xl relative pb-5 text-3xl font-bold capitalize text-[#444444] before:absolute before:bottom-0 before:left-0 before:h-[5px] before:w-[100px] before:rounded-[6px] before:bg-[#3756f7] after:absolute after:bottom-0 after:left-[110px] after:h-[5px] after:w-7 after:rounded-[6px] after:bg-[#3756f7]">
+                    Warto zobaczyć
+                </p>
             </div>
             <div class="grid grid-cols-12 gap-x-4">
                 <div class="col-span-8 md:col-span-12">
