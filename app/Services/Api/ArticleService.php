@@ -4,6 +4,7 @@ namespace App\Services\Api;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Services\SitemapService;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Illuminate\Http\Request;
+use App\Services\SitemapService;
+use App\Http\Controllers\Controller;
 use App\Services\Api\ArticleService;
 use App\Services\Api\CategoryService;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -21,6 +22,9 @@ class ArticleController extends Controller
         info('fetchArticle', ['id' => $request->id]);
         $json = $this->articleService->fetchArticle($request->id);
         $this->articleService->createOrUpdateArticle($json);
+
+
+        (new SitemapService)->createSitemap();
     }
 
     public function store(Request $request)

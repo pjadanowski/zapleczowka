@@ -19,6 +19,7 @@ class CategoryController extends Controller
         $category = Category::create([
             'name'       => $request->name,
             'seo_app_id' => $request->id,
+            'top_navbar_visible' => $request->top_navbar_visible ?? true
         ]);
 
         return response()->json(['category' => $category], 201);
