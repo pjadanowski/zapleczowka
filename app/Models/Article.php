@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasSlug;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -100,6 +101,16 @@ class Article extends Model implements Sitemapable
         return Attribute::make(
             get: fn ($value, $attr) => ! empty($this->thumbnail_image) ? $this->thumbnail_image : 'https://fakeimg.pl/640x360',
         );
+    }
+
+    function scopeSearch(Builder $query, string $terms = null) {
+        collect(explode(' ', $terms))->filter()->each(function ($term) use ($query) {
+            $term = "%$term%";
+            $query->where(function($query) use ($term) {
+                $query->where('title', 'like', $term)
+                ->orWhere('content', 'like', $term);
+            });
+        });
     }
 
     public function show()

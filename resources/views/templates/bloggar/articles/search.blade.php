@@ -1,6 +1,6 @@
 @extends('templates.bloggar.layout')
 
-@section('title', $category->name)
+@section('title', $search)
 
 @section('content')
     <div class="relative z-10 flex min-h-[160px] flex-col justify-center bg-cover bg-center bg-no-repeat before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:bg-[#232f4b] before:opacity-70 sm:min-h-[250px] md:mt-3">
@@ -9,14 +9,14 @@
                 <div class="col-span-12">
                     <div class="text-center">
                         <h1 class="mb-[20px] mt-[-10px] text-3xl text-white sm:mb-[10px] sm:text-3xl">
-                            {!! $category->name !!}
+                            Wyniki wyszukiwania
                         </h1>
                         <ul class="">
                             <li class="font-heading-font relative inline-block px-[5px] text-xl text-white after:left-[7px] after:content-['/'] sm:text-lg">
                                 <a href="/">Home</a>
                             </li>
                             <li class="font-heading-font relative inline-block px-[5px] text-xl text-[#cbd4fd] sm:text-lg">
-                                <span> {!! $category->name !!}</span>
+                                <span> Szukaj</span>
                             </li>
                         </ul>
                     </div>

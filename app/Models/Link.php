@@ -12,7 +12,6 @@ class Link extends Model
     protected $table = 'links';
 
     protected $fillable = [
-        'name', // deprecated -> dont use it anymore
         'anchor', // <a href={url}>{anchor}</a>
         'url', // a href="{url}"
         'seo_app_id',

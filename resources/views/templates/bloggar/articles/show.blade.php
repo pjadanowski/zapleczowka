@@ -340,9 +340,10 @@
                 <div class="col-span-4 md:col-span-12">
                     <div class="max-w-[400px] pl-7 lg:pl-0">
                         <div class="relative z-30 mb-7 border border-[#eef0fc] bg-[#f9faff] p-5 text-center">
-                            <form>
+                            <form action="{{ route('search') }}" method="get">
                                 <div class="relative">
                                     <input
+                                        name="search"
                                         type="text"
                                         placeholder="Search Post.."
                                         class="h-[70px] w-full rounded-[5px] bg-[rgba(55,86,247,0.05)] p-[6px_50px_6px_20px] text-base transition-all focus:bg-[rgba(55,86,247,0.1)] focus-visible:border-none focus-visible:outline-0"
