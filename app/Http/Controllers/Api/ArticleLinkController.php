@@ -39,4 +39,28 @@ class ArticleLinkController extends Controller
 
         return response()->json($al, 201);
     }
+
+    public function destroy(Request $request)
+    {
+        $request->validate([
+            'link_id'       => ['required'],
+            'article_id'    => ['required'],
+        ]);
+
+        $article = Article::where('seo_app_id', $request->article_id)->first();
+        $link = Link::where('seo_app_id', $request->link_id)->first();
+
+        if ($article === null || $link === null) {
+            return response()->json(['error' => 'Article or Link not found'], 404);
+        }
+
+        $deleted = ArticleLink::where([
+            'article_id' => $article->id,
+            'link_id'    => $link->id,
+        ])->delete();
+
+        info('delete article link', ['deleted' => $deleted, ['article_id' => $article->id, 'link_id' => $link->id]]);
+
+        return response()->json(['deleted' => $deleted !== null]);
+    }
 }

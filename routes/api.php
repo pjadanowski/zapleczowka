@@ -30,5 +30,6 @@ Route::group([
     Route::delete('categories/{id}', [\App\Http\Controllers\Api\CategoryController::class, 'destroy']);
 
     Route::post('article-link', [\App\Http\Controllers\Api\ArticleLinkController::class, 'store']);
+    Route::post('delete-article-link', [\App\Http\Controllers\Api\ArticleLinkController::class, 'destroy']);
 
 });
