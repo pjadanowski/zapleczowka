@@ -12,6 +12,7 @@ class ArticleLinkController extends Controller
 {
     public function store(Request $request)
     {
+        info('asd', $request->all());
         $request->validate([
             'link'       => ['required'],
             'article_id' => ['required'],
@@ -28,10 +29,15 @@ class ArticleLinkController extends Controller
             'status' => $request->link['status'],
         ]);
 
-        if ($article === null || $link === null) {
-            return response()->json(['error' => 'Article or Link not found'], 404);
+        if ($article === null) {
+            return response()->json(['error' => 'Article not found'], 404);
         }
 
+        if ($link === null) {
+            return response()->json(['error' => 'Link not found'], 404);
+        }
+
+        info('creating article link');
         $al = ArticleLink::create([
             'article_id' => $article->id,
             'link_id'    => $link->id,
@@ -42,6 +48,8 @@ class ArticleLinkController extends Controller
 
     public function destroy(Request $request)
     {
+        info('delete article link', $request->all());
+
         $request->validate([
             'link_id'       => ['required'],
             'article_id'    => ['required'],
@@ -50,8 +58,12 @@ class ArticleLinkController extends Controller
         $article = Article::where('seo_app_id', $request->article_id)->first();
         $link = Link::where('seo_app_id', $request->link_id)->first();
 
-        if ($article === null || $link === null) {
-            return response()->json(['error' => 'Article or Link not found'], 404);
+        if ($article === null) {
+            return response()->json(['error' => 'Article not found'], 404);
+        }
+
+        if ($link === null) {
+            return response()->json(['error' => 'Link not found'], 404);
         }
 
         $deleted = ArticleLink::where([
