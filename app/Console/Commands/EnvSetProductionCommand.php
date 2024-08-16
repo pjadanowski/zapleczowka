@@ -29,15 +29,14 @@ class EnvSetProductionCommand extends Command
     {
         $result = Process::run('pwd');
         $pwd = $result->output();
-        $domain = trim(Str::after($pwd, '/domains'));
-        $domain = rtrim($domain, '/public_html');
+        $domain = trim(Str::between($pwd, '/domains/', '/public_html'));
 
         $env = file_get_contents(base_path('.env'));
 
         $env = preg_replace('/APP_NAME=(.*)/', 'APP_NAME=' . $domain, $env);
         $env = preg_replace('/APP_ENV=(.*)/', 'APP_ENV=production', $env);
         $env = preg_replace('/APP_DEBUG=(.*)/', 'APP_DEBUG=false', $env);
-        $env = preg_replace('/APP_URL=(.*)/', 'APP_URL=' . $domain, $env);
+        $env = preg_replace('/APP_URL=(.*)/', 'APP_URL=https://' . $domain, $env);
         $env = preg_replace('/APP_LOCALE=(.*)/', 'APP_LOCALE=pl', $env);
 
         file_put_contents(base_path('.env'), $env);
