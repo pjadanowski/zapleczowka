@@ -32,8 +32,9 @@ composer config platform.php 8.3.8
 /opt/alt/php83/usr/bin/php artisan storage:link
 /opt/alt/php83/usr/bin/php artisan key:generate
 /opt/alt/php83/usr/bin/php artisan migrate:fresh --seed 
-/opt/alt/php83/usr/bin/php artisan optimize
+/opt/alt/php83/usr/bin/php artisan optimize:clear
 
 /opt/alt/php83/usr/bin/php artisan app:env-set-production
+/opt/alt/php83/usr/bin/php artisan data:sync #synchronize all articles, links , etc...
 
 echo "installation complete"

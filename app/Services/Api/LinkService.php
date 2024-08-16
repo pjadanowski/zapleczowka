@@ -51,6 +51,8 @@ class LinkService extends ParentApiService
                 DB::table('article_link')->updateOrInsert([
                     'article_id' => $article->id,
                     'link_id'    => $locLink->id,
+                    'updated_at' => now(),
+                    'created_at' => now(),
                 ], [
                     'status' => $link['status'],
                 ]);
