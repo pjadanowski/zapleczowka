@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('link_groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('client_id')->nullable()->constrained('clients');
+            $table->foreignId('client_id')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
