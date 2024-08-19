@@ -4,7 +4,6 @@ namespace App\Services\Api;
 
 use App\Models\Article;
 use App\Models\Category;
-use App\Services\SitemapService;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +12,9 @@ class ArticleService extends ParentApiService
 {
     public function getAll()
     {
+        $articles = $this->http->get('articles')->json();
+        info('fetching articles', array_column($articles, 'title'));
+
         return $this->http->get('articles')->json();
     }
 
@@ -28,6 +30,7 @@ class ArticleService extends ParentApiService
                 $found = Article::where('seo_app_id', $article['id'])->first();
 
                 if ($found === null) {
+                    info('inserting new article: ' . $article['title']);
                     // create
                     Article::create([
                         'title'                   => $article['title'],
@@ -62,7 +65,7 @@ class ArticleService extends ParentApiService
         }
     }
 
-    public function fetchArticle(int $id)
+    public function fetchArticle(int $id): array
     {
         try {
             return $this->http->get('articles/' . $id)->json();

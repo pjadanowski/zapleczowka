@@ -6,9 +6,11 @@ use App\Models\Category;
 
 class CategoryService extends ParentApiService
 {
-    public function getAll()
+    public function getAll(): array
     {
-        return $this->http->get('categories')->json();
+        $categories = $this->http->get('categories')->json();
+        info('fetching categories', array_column($categories, 'name'));
+        return $categories;
     }
 
     public function sync()
@@ -18,6 +20,7 @@ class CategoryService extends ParentApiService
                 $found = Category::where('seo_app_id', $category['id'])->first();
 
                 if ($found === null) {
+                    info('inserting new category: ' . $category['name']);
                     // create
                     Category::insert([
                         'name'       => $category['name'],
